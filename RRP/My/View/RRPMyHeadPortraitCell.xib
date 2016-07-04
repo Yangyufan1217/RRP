@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="RRPMyHeadPortraitCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RRPMyHeadPortraitCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veE-ZC-2FE">
+                        <rect key="frame" x="15" y="42" width="50" height="15.5"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.47436317916709386" blue="0.78385600459978233" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="79U-ON-taJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rK-O9-TWN">
+                        <rect key="frame" x="285" y="40" width="20" height="19.5"/>
+                        <color key="backgroundColor" red="0.69231357810000005" green="0.87268871640000001" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="CaF-On-Dez"/>
+                        </constraints>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ok-q3-82X">
+                        <rect key="frame" x="200" y="15" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="dnm-YD-1xM"/>
+                            <constraint firstAttribute="width" constant="70" id="nlM-ri-Y82"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="veE-ZC-2FE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="50l-x2-4U3"/>
+                    <constraint firstItem="veE-ZC-2FE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="S4d-Xa-D4n"/>
+                    <constraint firstItem="4rK-O9-TWN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="VkP-vz-Fi9"/>
+                    <constraint firstAttribute="trailing" secondItem="4rK-O9-TWN" secondAttribute="trailing" constant="15" id="Vxi-pG-z9a"/>
+                    <constraint firstAttribute="bottom" secondItem="veE-ZC-2FE" secondAttribute="bottom" constant="42" id="aAD-TM-mlc"/>
+                    <constraint firstAttribute="bottom" secondItem="4rK-O9-TWN" secondAttribute="bottom" constant="40" id="bLL-5T-8Xs"/>
+                    <constraint firstItem="6ok-q3-82X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="pwZ-mr-h01"/>
+                    <constraint firstItem="4rK-O9-TWN" firstAttribute="leading" secondItem="6ok-q3-82X" secondAttribute="trailing" constant="15" id="vga-Ri-0VN"/>
+                    <constraint firstAttribute="bottom" secondItem="6ok-q3-82X" secondAttribute="bottom" constant="14.5" id="zOs-lG-hqL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="headPortaitButton" destination="6ok-q3-82X" id="1HN-RA-Rk2"/>
+                <outlet property="moreButton" destination="4rK-O9-TWN" id="2sI-fu-iZ6"/>
+                <outlet property="titleNameLabel" destination="veE-ZC-2FE" id="cq6-OD-P5Z"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

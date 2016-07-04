@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RRPTicketTypeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket-type.png" translatesAutoresizingMaskIntoConstraints="NO" id="zHV-gb-SIh">
+                        <rect key="frame" x="12" y="15" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="BGv-yT-GjJ"/>
+                            <constraint firstAttribute="width" secondItem="zHV-gb-SIh" secondAttribute="height" multiplier="1:1" id="Rlm-85-3vg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myP-aM-aBs">
+                        <rect key="frame" x="0.0" y="48" width="320" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.01581925511" blue="0.012089051409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bqo-vM-y0C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfP-4r-vGb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.01581925511" blue="0.012089051409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZLn-TM-eLa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门票类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxc-jH-pGN">
+                        <rect key="frame" x="41" y="14" width="142" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Pls-gu-qx0"/>
+                            <constraint firstAttribute="width" constant="142" id="wsl-nD-dOo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="myP-aM-aBs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3QK-QP-C7P"/>
+                    <constraint firstItem="IfP-4r-vGb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BAs-WK-k66"/>
+                    <constraint firstAttribute="trailing" secondItem="IfP-4r-vGb" secondAttribute="trailing" id="IVy-f0-S8c"/>
+                    <constraint firstItem="zHV-gb-SIh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="InM-xQ-wyw"/>
+                    <constraint firstAttribute="trailing" secondItem="myP-aM-aBs" secondAttribute="trailing" id="K6E-SN-67K"/>
+                    <constraint firstItem="IfP-4r-vGb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TCw-Xe-KWc"/>
+                    <constraint firstItem="Lxc-jH-pGN" firstAttribute="leading" secondItem="zHV-gb-SIh" secondAttribute="trailing" constant="9" id="bFU-rw-dEf"/>
+                    <constraint firstItem="zHV-gb-SIh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gsO-cC-a8N"/>
+                    <constraint firstItem="Lxc-jH-pGN" firstAttribute="centerY" secondItem="zHV-gb-SIh" secondAttribute="centerY" id="lnq-ZE-VWA"/>
+                    <constraint firstAttribute="bottom" secondItem="myP-aM-aBs" secondAttribute="bottom" id="quI-AS-RAi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomLine" destination="myP-aM-aBs" id="Qj2-FC-5CN"/>
+                <outlet property="ticketTypeLabel" destination="Lxc-jH-pGN" id="3GD-UF-Ij0"/>
+                <outlet property="ticketTypeView" destination="zHV-gb-SIh" id="vXW-U0-sCl"/>
+                <outlet property="topLine" destination="IfP-4r-vGb" id="dby-kM-o8p"/>
+            </connections>
+            <point key="canvasLocation" x="291" y="325"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ticket-type.png" width="78" height="26"/>
+    </resources>
+</document>

@@ -1,0 +1,292 @@
+//
+//  PrefixHeader.pch
+//  RRP
+//
+//  Created by sks on 16/2/16.
+//  Copyright © 2016年 sks. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "RRPFindViewController.h"
+#import "MyAlertView.h"
+#import <UIKit/UIKit.h>
+#import "Utility.h"
+#import <Foundation/Foundation.h>
+#import "RRPPrintObject.h"
+#import "UIImageView+WebCache.h"
+#import "HWTextView.h"
+#import "Masonry.h"
+#import "CameraViewController.h"
+#import "CameraSessionView.h"
+#import "CameraViewCustom.h"
+#import "BoPhotoPickerViewController.h"
+#import "RRPMapController.h"
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "DKNightVersion.h"
+#import "AFNetworking.h"
+#import <MJExtension.h>
+#import "RRPDataRequestModel.h"
+#import "RRPLoginViewController.h"
+#import "BaseViewController.h"
+#import "RRPYCSigleClass.h"
+#import "MJRefresh.h"
+#import "RMCalendarController.h"
+#import "MJExtension.h"
+#import "TicketModel.h"
+#import <SMS_SDK/SMSSDK.h>
+#import "NetWorkManager.h"
+#import "AppDelegate.h"
+#import <MessageUI/MessageUI.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import "RRPFindTopModel.h"
+#import "DKNightVersion.h"
+#import "RRPAllCityHandle.h"
+#import "UMMobClick/MobClick.h"
+
+//屏宽屏高
+#define RRPWidth [UIScreen mainScreen].bounds.size.width
+#define RRPHeight [UIScreen mainScreen].bounds.size.height
+#define DEFAULT_VOID_COLOR [UIColor whiteColor]
+
+//RGB颜色
+#define IWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+//rgb颜色转换（16进制->10进制）
+#define mRGBToColor(rgb) [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0 green:((float)((rgb & 0xFF00) >> 8))/255.0 blue:((float)(rgb & 0xFF))/255.0 alpha:1.0]
+
+#define TimeOutInterval 20
+
+
+//MD5加密密码
+#define kSigned @"de7724daa4fb102cc51262d60046adb7"
+//高德地图配置的Key
+#define MapKey @"05f5f5dfdf67eab35fb58e0ee664b48c"
+//QQ登录appID
+#define TencentAppId @"1105309180"
+
+
+
+
+
+#pragma mark - 数据接口
+//外网
+//#define Server(relativeUrl) [NSString stringWithFormat:@"http://dev2.renrenpiao.net:8085/%@", relativeUrl]
+//外网
+#define Server(relativeUrl) [NSString stringWithFormat:@"http://app.renrenpiao.com/%@", relativeUrl]
+
+//内网
+//#define Server(relativeUrl) [NSString stringWithFormat:@"http://192.168.0.11:8085/%@", relativeUrl]
+
+/**
+ *所有城市
+ **/
+#define HomeAllCity Server(@"index.php?s=/AppIndex/entrance")
+
+/**
+ *热门城市
+ **/
+#define HomeHotCity Server(@"index.php?s=/AppIndex/entrance")
+/**
+ *首页搜索
+ **/
+#define HomeSearch Server(@"index.php?s=/AppIndex/entrance")
+
+/**
+ *分类
+ **/
+#define HomeClassify Server(@"index.php?s=/AppIndex/entrance")
+/**
+ *分类列表
+ **/
+#define HomeClassifyList Server(@"index.php?s=/TicketAbout/entrance")
+
+/**
+ *门票精选
+ **/
+#define HomeSelected Server(@"index.php?s=/TicketAbout/entrance")
+/**
+ *精选详情
+ **/
+#define HomeSelectedDetails Server(@"index.php?s=/TicketAbout/entrance")
+/**
+ *周边推荐
+ **/
+#define HomePeripheral Server(@"index.php?s=/TicketAbout/entrance")
+
+/**
+ *全部评论
+ **/
+#define HomeAllCommnent Server(@"index.php?s=/SceneryComment/entrance")
+
+/**
+ *根据标签获取评论
+ **/
+#define HomeByLableGetComment Server(@"index.php?s=/SceneryComment/entrance")
+
+/**
+ *首页轮播图
+ **/
+#define HomeCircleScrollView Server(@"index.php?s=/AppIndex/entrance")
+
+/**
+ *门票分类
+ **/
+#define HomeNavigationList Server(@"index.php?s=/AppIndex/entrance")
+
+
+/**
+ *  发现首页
+ */
+#define FindHome Server(@"index.php?s=/AppFound/entrance")
+
+
+/**
+ *  娱乐列表
+ */
+#define FindRecreation Server(@"index.php?s=/AppFound/entrance")
+
+/**
+ *  特价列表
+ */
+#define FindSpecial Server(@"index.php?s=/AppFound/entrance")
+
+
+/**
+ *  当季热玩
+ */
+#define FindSeason Server(@"index.php?s=Html/season_hotplay&city_code=%@&classcode=%@")
+
+/**
+ *  单篇H5
+ */
+#define FindAlone Server(@"index.php?s=Html/scenery_html/id/%ld")
+
+/**
+ *  下一站
+ */
+#define FindNext Server(@"index.php?s=Html/next_travel&longitude=%f&latitude=%f")
+
+/**
+ *  每日精选
+ */
+#define FindChoiceness Server(@"index.php?s=/AppFound/entrance")
+
+/**
+ *  公司简介
+ */
+#define myCompanyIntro Server(@"index.php?s=Html/company")
+
+/**
+ *  用户协议
+ */
+#define myCompanyProtocol Server(@"index.php?s=Html/service")
+
+/**
+ *  全部订单
+ */
+#define MyAllOrder Server(@"index.php?s=/AppMine/entrance")
+
+
+/**
+ *  未支付
+ */
+#define MyNoPay Server(@"index.php?s=/AppMine/entrance")
+
+
+/**
+ *  未出行
+ */
+#define MyNoTravel Server(@"index.php?s=/AppMine/entrance")
+
+
+/**
+ *  待评价
+ */
+#define MyNoComment Server(@"index.php?s=/AppMine/entrance")
+
+
+/**
+ *  收藏
+ */
+#define MySave Server(@"index.php?s=/AppMine/entrance")
+
+
+/**
+ *  订单填写
+ */
+#define HomeOrderWrite Server(@"index.php?s=/AppOrder/entrance")
+
+/**
+ *  订单提交
+ */
+#define HomeOrderSubmit Server(@"index.php?s=/AppOrder/entrance")
+
+/**
+ *  价格日历
+ */
+#define GetPriceCanlender Server(@"index.php?s=/AppOrder/entrance")
+
+
+/**
+ *  消息列表
+ */
+#define MyMessageList Server(@"index.php?s=/AppMine/entrance")
+
+/**
+ *  注册
+ */
+#define Regist Server(@"index.php?s=/AppMine/entrance")
+
+/**
+ *  常用联系人
+ */
+#define MyContact Server(@"index.php?s=/AppMine/entrance")
+
+/**
+ *  收藏
+ */
+#define MyCollection Server(@"index.php?s=/TicketAbout/entrance")
+
+/**
+ *  删除收藏/取消收藏
+ */
+#define MyDeleteCollection Server(@"index.php?s=/TicketAbout/entrance")
+
+/**
+ *  点赞
+ */
+#define MyClickComment Server(@"index.php?s=/SceneryComment/entrance")
+
+/**
+ *  退票
+ */
+#define MyRefundTicket Server(@"index.php?s=/AppMine/entrance")
+
+/**
+ *  上传头像
+ */
+#define MyUpLoadHeadImage Server(@"index.php?s=/AppImg/entrance")
+
+/**
+ *  分享
+ */
+#define HomeShare Server(@"index.php?s=/AppShare/entrance")
+
+/**
+ *  支付完成
+ */
+#define OrderFinish Server(@"index.php?s=/AppOrder/entrance")
+
+/**
+ *  发表评论
+ */
+#define MySubmitComment Server(@"index.php?s=/SceneryComment/entrance")
+
+
+
+
+#endif
+
+
