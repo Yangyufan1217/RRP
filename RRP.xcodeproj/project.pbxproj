@@ -2840,7 +2840,7 @@
 					"$(PROJECT_DIR)/RRP/Vendor/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/RRP/Vendor/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = /Users/sks/Desktop/RRP/RRP/PublicClass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RRP/PublicClass/PrefixHeader.pch";
 				INFOPLIST_FILE = RRP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2876,7 +2876,7 @@
 					"$(PROJECT_DIR)/RRP/Vendor/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/RRP/Vendor/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = /Users/sks/Desktop/RRP/RRP/PublicClass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RRP/PublicClass/PrefixHeader.pch";
 				INFOPLIST_FILE = RRP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
