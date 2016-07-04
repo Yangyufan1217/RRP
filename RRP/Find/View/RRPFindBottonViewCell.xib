@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RRPFindBottonViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eua-yx-Qij">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRT-Ja-OyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="SRT-Ja-OyJ" secondAttribute="bottom" id="BGX-Dl-miS"/>
+                <constraint firstItem="SRT-Ja-OyJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EEx-kV-5lg"/>
+                <constraint firstItem="SRT-Ja-OyJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LOy-2B-6zv"/>
+                <constraint firstAttribute="trailing" secondItem="SRT-Ja-OyJ" secondAttribute="trailing" id="Qsf-7y-Ude"/>
+                <constraint firstItem="eua-yx-Qij" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VFf-Go-SoA"/>
+                <constraint firstAttribute="trailing" secondItem="eua-yx-Qij" secondAttribute="trailing" id="cIp-a7-Sub"/>
+                <constraint firstAttribute="bottom" secondItem="eua-yx-Qij" secondAttribute="bottom" id="pAu-QY-mgr"/>
+                <constraint firstItem="eua-yx-Qij" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zaQ-JW-7vv"/>
+            </constraints>
+            <size key="customSize" width="332" height="133"/>
+            <connections>
+                <outlet property="bottomBackImageView" destination="eua-yx-Qij" id="nZo-ug-7sh"/>
+                <outlet property="bottomCoverView" destination="SRT-Ja-OyJ" id="lYk-VF-kiS"/>
+            </connections>
+            <point key="canvasLocation" x="316" y="293"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RRPDetailsImageCell" id="gTV-IL-0wX" customClass="RRPDetailsImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Map-Sk-c9q">
+                        <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="Map-Sk-c9q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6ZK-4e-1SX"/>
+                <constraint firstAttribute="trailing" secondItem="Map-Sk-c9q" secondAttribute="trailing" id="Fus-y1-F5g"/>
+                <constraint firstAttribute="bottom" secondItem="Map-Sk-c9q" secondAttribute="bottom" id="efu-oe-A7f"/>
+                <constraint firstItem="Map-Sk-c9q" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="erh-KA-xYf"/>
+            </constraints>
+            <size key="customSize" width="145" height="145"/>
+            <connections>
+                <outlet property="contentImageView" destination="Map-Sk-c9q" id="wrx-m0-UZS"/>
+            </connections>
+            <point key="canvasLocation" x="263.5" y="237.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

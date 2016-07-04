@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="KGk-i7-Jjw" customClass="RRPSaleDetailPicCell">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="124.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="saleList.png" translatesAutoresizingMaskIntoConstraints="NO" id="uzB-tW-KyC">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="128"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55张" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jc7-vQ-69t">
+                        <rect key="frame" x="247" y="93.5" width="68" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="EOZ-mx-c05"/>
+                            <constraint firstAttribute="width" constant="68" id="jFl-di-7Q1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Jc7-vQ-69t" secondAttribute="trailing" constant="10" id="GGL-9S-0Ad"/>
+                    <constraint firstItem="uzB-tW-KyC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NJc-zZ-b2A"/>
+                    <constraint firstAttribute="trailing" secondItem="uzB-tW-KyC" secondAttribute="trailing" id="T7X-CV-OTt"/>
+                    <constraint firstAttribute="bottom" secondItem="uzB-tW-KyC" secondAttribute="bottom" id="U1c-Yr-LCV"/>
+                    <constraint firstItem="uzB-tW-KyC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Xg2-nT-9SG"/>
+                    <constraint firstAttribute="bottom" secondItem="Jc7-vQ-69t" secondAttribute="bottom" constant="10" id="q9m-6D-R05"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="pageLabel" destination="Jc7-vQ-69t" id="7cf-pZ-ave"/>
+                <outlet property="saleDetailBackView" destination="uzB-tW-KyC" id="hBJ-S0-OK3"/>
+            </connections>
+            <point key="canvasLocation" x="238.5" y="323.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="saleList.png" width="1920" height="1200"/>
+    </resources>
+</document>
