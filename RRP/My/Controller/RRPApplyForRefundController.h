@@ -11,5 +11,8 @@
 @interface RRPApplyForRefundController : UIViewController
 @property (nonatomic,strong)NSString *orderid;
 @property (nonatomic,strong)NSString *orgin;
+@property (nonatomic,strong)NSString *orderno;
+
+
 
 @end

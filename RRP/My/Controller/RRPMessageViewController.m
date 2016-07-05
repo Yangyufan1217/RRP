@@ -86,8 +86,6 @@
 
 #pragma mark - UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     RRPMessageModel *model = self.messageArray[indexPath.row];
     if ([model.status isEqualToString:@"1"]) {
         //支付成功
@@ -119,8 +117,7 @@
         cell.fifthRightLabel.hidden = YES;
 
         return cell;
-    }else if ([model.refundstatus isEqualToString:@"2"])
-    {
+    }else {
         RRPMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RRPMessageCell" forIndexPath:indexPath];
         //取消点击样式
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -131,8 +128,7 @@
         cell.forthLeftLabel.text = @"退款金额 :";
         if ([model.stdname length] > 0) {
             cell.firstRightLabel.text = model.stdname;
-        }else
-        {
+        }else{
             cell.firstRightLabel.text = model.ticketname;
         }
         cell.secondRightLabel.text = model.orderno;
@@ -148,9 +144,6 @@
         cell.fifthLeftLabel.text = @"退款原因 :";
         cell.fifthRightLabel.text = model.refundremark;
         return cell;
-    }else
-    {
-        return nil;
     }
 }
 

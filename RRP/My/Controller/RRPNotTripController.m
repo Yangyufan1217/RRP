@@ -60,6 +60,7 @@ typedef NS_ENUM(NSInteger, refState){
     RRPNoPayModel *model = self.noTravelArray[path.row];
     refoundTicketVC.orderid = model.oid;
     refoundTicketVC.orgin = model.origin;
+    refoundTicketVC.orderno = model.orderno;
     //统计:未出行退款按钮点击
     NSDictionary *dict = @{@"ticketname":model.ticketname,@"orderid":model.oid,@"orgin":model.origin};
     [MobClick event:@"60" attributes:dict];
