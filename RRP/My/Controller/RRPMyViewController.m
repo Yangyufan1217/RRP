@@ -32,6 +32,8 @@
 @property (assign, nonatomic) BOOL isBackImage;
 @property (nonatomic, strong) UILabel *numberLabel;
 @property (nonatomic, assign) NSUInteger size;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *signatureLabel;
 
 @end
 
@@ -268,17 +270,17 @@
         
         
         //标题
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 15, RRPWidth - 46, 15)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 15, RRPWidth - 46, 15)];
         NSString *nickname = [[NSUserDefaults standardUserDefaults]objectForKey:@"nickname"];
         if ([nickname isEqualToString:@""]) {
-            titleLabel.text = @"登录/注册";
+            self.titleLabel.text = @"登录/注册";
         }else {
-            titleLabel.text = [NSString stringWithFormat:@"%@",nickname];
+            self.titleLabel.text = [NSString stringWithFormat:@"%@",nickname];
         }
-        titleLabel.font = [UIFont systemFontOfSize:15];
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.textAlignment = 1;
-        [view addSubview:titleLabel];
+        self.titleLabel.font = [UIFont systemFontOfSize:15];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.textAlignment = 1;
+        [view addSubview:self.titleLabel];
         //消息按钮
         UIButton *newsButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
         newsButton.frame = CGRectMake(RRPWidth - 45, 15, 22.5, 22.5);
@@ -309,19 +311,19 @@
         //向视图添加手势
         [self.headImageView addGestureRecognizer:self.tap];
         //签名
-        UILabel *signatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.headImageView.frame)+15, RRPWidth - 20, 15)];
-        signatureLabel.textColor = [UIColor whiteColor];
-        signatureLabel.font = [UIFont systemFontOfSize:15];
-        signatureLabel.textAlignment = 1;
+        self.signatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.headImageView.frame)+15, RRPWidth - 20, 15)];
+        self.signatureLabel.textColor = [UIColor whiteColor];
+        self.signatureLabel.font = [UIFont systemFontOfSize:15];
+        self.signatureLabel.textAlignment = 1;
         
        NSString *per_note = [[NSUserDefaults standardUserDefaults]objectForKey:@"per_note"];
         if ([per_note isEqualToString:@""]) {
-            signatureLabel.text = @"世界那么大,我想去看看";
+            self.signatureLabel.text = @"世界那么大,我想去看看";
         }else {
-            signatureLabel.text = per_note;
+            self.signatureLabel.text = per_note;
         }
         
-        [view addSubview:signatureLabel];
+        [view addSubview:self.signatureLabel];
         
         return self.imageView;
     }else {
@@ -502,9 +504,14 @@
          *  register  key
          *  YES登录了  NO未登录
          */
+        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"head_img"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"per_note"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"nickname"];
         [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:@"register"];
         [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"user_id"];
         [[NSUserDefaults standardUserDefaults]synchronize];
+        RRPLoginViewController *loginVC = [[RRPLoginViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:nil];
         [self.tableView reloadData];
     }
 }

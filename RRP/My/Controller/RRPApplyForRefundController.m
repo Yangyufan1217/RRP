@@ -426,8 +426,6 @@ static const NSInteger maxInputCount = 255;
 
 //提交
 - (void)submitButton:(UIButton *)sender {
-//    NSLog(@"%@",self.textView.text);
-//    self.textView.text = nil;
     if ([self.orgin length] > 0 && [self.selectReason length] > 0) {
         //统计:申请退票提交按钮点击
         [MobClick event:@"61"];
@@ -445,6 +443,7 @@ static const NSInteger maxInputCount = 255;
     NSString *user_id = [[NSUserDefaults standardUserDefaults]objectForKey:@"user_id"];
     [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:@"refund_ticket" forKey:@"method"];
     [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:user_id forKey:@"memberid"];
+    [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:self.orderno forKey:@"orderno"];
     [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:self.orderid forKey:@"orderid"];
     [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:self.selectReason forKey:@"refundremark"];
     NSMutableDictionary *dic = [RRPDataRequestModel shareDataRequestModel].dataPortMessageDic;
@@ -457,7 +456,6 @@ static const NSInteger maxInputCount = 255;
         if (code == 1000)  {
             NSInteger code = [[nullDict[@"ResponseBody"] valueForKey:@"code"] integerValue];
             if (code == 2000) {
-                
                 //申请退款成功弹框
                 NSString *sizeString = @"申请退款成功,我们将于7个工作日之内处理,请您及时到消息列表中查看退款通知";
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:sizeString preferredStyle:(UIAlertControllerStyleAlert)];
@@ -465,12 +463,12 @@ static const NSInteger maxInputCount = 255;
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                     [self.navigationController popViewControllerAnimated:YES];
                 }];
-                
                 //添加按钮 将按钮添加到UIAlertController对象上
                 [alertController addAction:okAction];
                 [self.navigationController presentViewController:alertController animated:YES completion:nil];
-                
-           }
+            }else {
+                [[MyAlertView sharedInstance]showFrom:@"退票请求失败，请联系客服"];
+            }
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
