@@ -180,7 +180,7 @@
                 self.number = 0;
             }else {
                 cell.headImageView.image = [UIImage imageNamed:@"Apple_Pay_mark_small_"];
-                cell.nameLabel.text = @"Apple pey支付";
+                cell.nameLabel.text = @"Apple pay支付";
                 cell.explainLabel.text = @"推荐使用，方便快捷安全简单";
                 cell.selectImage.image = [UIImage imageNamed:@"已选择"];
                 self.number = 0;
@@ -354,11 +354,11 @@
         [view addSubview:moneyLabel];
         
         self.moreButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        self.moreButton.frame = CGRectMake(RRPWidth - 30 , 17.5, 15, 15);
+        self.moreButton.frame = CGRectMake(RRPWidth - 40 , 5, 40, 40);
         if (click == YES) {
-            [self.moreButton setBackgroundImage:[UIImage imageNamed:@"展开"] forState:(UIControlStateNormal)];
+            [self.moreButton setBackgroundImage:[UIImage imageNamed:@"订单展开"] forState:(UIControlStateNormal)];
         }else {
-            [self.moreButton setBackgroundImage:[UIImage imageNamed:@"合并"] forState:(UIControlStateNormal)];
+            [self.moreButton setBackgroundImage:[UIImage imageNamed:@"订单收起"] forState:(UIControlStateNormal)];
         }
         [self.moreButton addTarget:self action:@selector(moreButton:) forControlEvents:(UIControlEventTouchUpInside)];
         [view addSubview:self.moreButton];

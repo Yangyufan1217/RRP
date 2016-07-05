@@ -39,6 +39,10 @@
     [self.submitButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [self.submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
+    self.nameTextField.text = self.editModel.r_name;
+    self.certificateNumberTextField.text = self.editModel.r_idcardno;
+    self.iphoneNumberLabel.text = self.editModel.r_mobile;
+    
     //左侧返回按钮
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:(UIBarButtonItemStyleDone) target:self action:@selector(returnAction:)];
 

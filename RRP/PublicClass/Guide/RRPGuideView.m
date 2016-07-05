@@ -38,6 +38,8 @@
     _scrollView.contentSize = CGSizeMake(self.frame.size.width*3, self.frame.size.height);
     //整屏滑动
     _scrollView.pagingEnabled = YES;
+    //关闭反弹效果
+    _scrollView.bounces = NO;
     //设置代理
     _scrollView.delegate = self;
     [self addSubview:_scrollView];

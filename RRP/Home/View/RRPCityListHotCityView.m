@@ -86,6 +86,9 @@
     
     self.hotCityModel = self.hotCityArray[indexPath.row];
     NSString *hotCityName = self.hotCityModel.city_name;
+    if ([hotCityName length] > 4) {
+        hotCityName = [self.hotCityModel.city_name substringWithRange:NSMakeRange(0, 4)];
+    }
     cell.cityNameLabel.text = hotCityName;
     return cell;
 }
