@@ -514,11 +514,10 @@
     int keyboardheight = keyboardRect.size.height;
     self.keyboardheight = keyboardheight;
     
-    self.tableView.frame = CGRectMake(0, -keyboardheight/2-70, RRPWidth, RRPHeight);
+    self.tableView.frame = CGRectMake(0, -keyboardheight/2, RRPWidth, RRPHeight);
     if(!self.tapGesture){
         //增加tap手势，点击使退出键盘
         self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyBoard)];
-        
     }
     [self.tableView addGestureRecognizer:self.tapGesture];
 }
