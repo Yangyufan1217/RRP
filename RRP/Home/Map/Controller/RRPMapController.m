@@ -35,9 +35,6 @@
     self.title = @"地图";
     self.latitudeArray = [@[] mutableCopy];
     self.longitudeArray = [@[] mutableCopy];
-    
-    
-    
     //配置用户Key
     [MAMapServices sharedServices].apiKey = MapKey;
     _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
@@ -46,7 +43,7 @@
     /*MAUserTrackingModeNone：仅在地图上显示，不跟随用户位置。
     MAUserTrackingModeFollow：跟随用户位置移动，并将定位点设置成地图中心点。
     MAUserTrackingModeFollowWithHeading：跟随用户的位置和角度移动。*/
-    [_mapView setUserTrackingMode: MAUserTrackingModeFollow animated:YES]; //地图跟着位置移动
+    [_mapView setUserTrackingMode: MAUserTrackingModeNone animated:YES]; //地图跟着位置移动
     //显示地图类型
     _mapView.mapType = MAMapTypeStandard;
     //实时交通

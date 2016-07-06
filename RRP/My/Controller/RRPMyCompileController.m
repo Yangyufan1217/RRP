@@ -526,6 +526,8 @@
             [MobClick event:@"78"];
             [self presentViewController:findPassWordVC animated:YES completion:^{
             }];
+        }else {
+            [[MyAlertView sharedInstance]showFrom:@"第三方登录不能改修密码"];
         }
     }else if (indexPath.section == 2 && indexPath.row == 0) {
         [self.view addSubview:self.birthdayView];
