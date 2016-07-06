@@ -271,11 +271,10 @@
         
         //标题
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 15, RRPWidth - 46, 15)];
-        NSString *nickname = [[NSUserDefaults standardUserDefaults]objectForKey:@"nickname"];
-        if ([nickname isEqualToString:@""]) {
+        if (self.nickname == nil) {
             self.titleLabel.text = @"登录/注册";
         }else {
-            self.titleLabel.text = [NSString stringWithFormat:@"%@",nickname];
+            self.titleLabel.text = [NSString stringWithFormat:@"%@",self.nickname];
         }
         self.titleLabel.font = [UIFont systemFontOfSize:15];
         self.titleLabel.textColor = [UIColor whiteColor];
@@ -298,11 +297,10 @@
         self.headImageView.userInteractionEnabled = YES;
         self.headImageView.layer.masksToBounds = YES;
         self.headImageView.layer.cornerRadius = self.headImageView.frame.size.height/2;
-        NSString *headimgurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"head_img"];
-        if ([headimgurl isEqualToString:@""]) {
+        if (self.head_img == nil) {
             self.headImageView.image = [UIImage imageNamed:@"会员默认头像"];
         }else {
-            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",headimgurl]] placeholderImage:[UIImage imageNamed:@"会员默认头像"]];
+            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.head_img]] placeholderImage:[UIImage imageNamed:@"会员默认头像"]];
         }
         [view addSubview:self.headImageView];
         self.view.userInteractionEnabled = YES;
@@ -316,11 +314,10 @@
         self.signatureLabel.font = [UIFont systemFontOfSize:15];
         self.signatureLabel.textAlignment = 1;
         
-       NSString *per_note = [[NSUserDefaults standardUserDefaults]objectForKey:@"per_note"];
-        if ([per_note isEqualToString:@""]) {
+        if (self.per_note == nil) {
             self.signatureLabel.text = @"世界那么大,我想去看看";
         }else {
-            self.signatureLabel.text = per_note;
+            self.signatureLabel.text = self.per_note;
         }
         
         [view addSubview:self.signatureLabel];
@@ -625,9 +622,46 @@
 }
 
 
+#pragma mark - 数据请求
+- (void)downLoadDataLook {
+    NSString *user_id = [[NSUserDefaults standardUserDefaults]objectForKey:@"user_id"];
+    [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:user_id forKey:@"memberid"];
+    [[RRPDataRequestModel shareDataRequestModel].dataPortMessageDic setValue:@"seepersonal" forKey:@"method"];
+    NSMutableDictionary *dic = [RRPDataRequestModel shareDataRequestModel].dataPortMessageDic;
+    [[NetWorkManager sharedManager] requestSerializer].timeoutInterval = TimeOutInterval;
+    [[NetWorkManager sharedManager] POST:Regist parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSDictionary * dico = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary * dict = [RRPPrintObject nullDic:dico];
+        NSInteger code = [[dict[@"ResponseHead"] valueForKey:@"code"] integerValue];
+        if (code == 1000) {
+            self.head_img = dict[@"ResponseBody"][@"head_img"];//头像
+            self.nickname = dict[@"ResponseBody"][@"nickname"];//昵称
+            self.per_note = dict[@"ResponseBody"][@"per_note"];//签名
+            self.realname = dict[@"ResponseBody"][@"realname"];//名字
+            self.mobile = dict[@"ResponseBody"][@"mobile"];//电话
+            self.birthday = dict[@"ResponseBody"][@"birthday"];//生日
+            self.sex = [NSString stringWithFormat:@"%@",dict[@"ResponseBody"][@"sex"]];//性别
+            self.email = dict[@"ResponseBody"][@"email"];//邮箱
+            self.site = dict[@"ResponseBody"][@"site"];//住址
+        }else if (code == 4001) {
+            self.head_img = self.nickname = self.per_note = self.realname = self.mobile = self.birthday = self.sex = self.email = self.site = nil;
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        
+    }];
+    
+}
+
+
+
+
+
+
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-    [self.tableView reloadData];
+    [self downLoadDataLook];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
