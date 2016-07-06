@@ -18,9 +18,9 @@
     
 }
 //赋值
-- (void)showDataWithArray:(NSMutableArray *)imageUrlArr
+- (void)showDataWithArray:(NSMutableArray *)imageUrlArr topImage:(NSString *)topimage
 {
-    NSURL *imageURL = [NSURL URLWithString:[imageUrlArr firstObject]];
+    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",topimage]];
     [self.saleDetailBackView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"发现750-285"]];
     self.pageLabel.text = [NSString stringWithFormat:@"%ld张",imageUrlArr.count];
 

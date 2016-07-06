@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *pageLabel;
 
 //赋值
-- (void)showDataWithArray:(NSMutableArray *)imageUrlArr;
+- (void)showDataWithArray:(NSMutableArray *)imageUrlArr topImage:(NSString *)topimage;
 
 @end

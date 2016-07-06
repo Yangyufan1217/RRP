@@ -10,11 +10,6 @@
 #import "FindRecreationModel.h"
 
 @interface RRPCateListLeftCell ()
-
-@property (nonatomic, strong) NSString *string;
-@property (nonatomic, strong) NSString *titleStr;
-@property (nonatomic, strong) NSString *centerStr;
-
 @end
 
 @implementation RRPCateListLeftCell
@@ -30,20 +25,11 @@
 
 
 - (void)show:(FindRecreationModel *)model {
-    self.titleStr = model.sceneryname;
-    self.centerStr = [self getNameWithChineseName:model.sceneryname];
-    self.string = model.summary;
+    self.RRPtitleLabel.text = model.sceneryname;
+    self.RRPcenterLabel.text = [self getNameWithChineseName:model.sceneryname];
+    self.detailLabel.text = model.summary;
     //图片异步加载
     [self.backView sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:[UIImage imageNamed:@"发现750-285"]];
-    //开辟线程 喷枪打字
-    NSThread *thred1 = [[NSThread alloc]initWithTarget:self selector:@selector(animationForShowtitleLableBigLabelText1) object:nil];
-    [thred1 start];
-    //开辟线程 喷枪打字
-    NSThread *thred2 = [[NSThread alloc]initWithTarget:self selector:@selector(animationForShowtitleLableBigLabelText2) object:nil];
-    [thred2 start];
-    NSThread *thred3 = [[NSThread alloc]initWithTarget:self selector:@selector(animationForShowtitleLableBigLabelText3) object:nil];
-    [thred3 start];
-
 }
 -(NSString *)getNameWithChineseName:(NSString *)name
 {
@@ -69,98 +55,38 @@
 - (void)layoutPrintLabel
 {
     //标题
-    self.titleStr = @"ssdfsdfsfsdfsd";
-    self.RRPtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 50, self.coverView.frame.size.width - 50, 15)];
+    self.RRPtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 23, self.coverView.frame.size.width - 50, 32)];
     self.RRPtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-    self.RRPtitleLabel.text = self.titleStr;
     self.RRPtitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.RRPtitleLabel.numberOfLines = 0;
     self.RRPtitleLabel.textColor = [UIColor whiteColor];
-    
+    self.RRPtitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.coverView addSubview:self.RRPtitleLabel];
     
-    self.centerStr = @"Hotel Nikko New Century Beijing";
     //英文
-    self.RRPcenterLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.RRPtitleLabel.frame)+4, self.coverView.frame.size.width - 50, 9)];
+    self.RRPcenterLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.RRPtitleLabel.frame)+4, self.coverView.frame.size.width - 50, 18)];
     self.RRPcenterLabel.font = [UIFont systemFontOfSize:8];
-    self.RRPcenterLabel.text = self.centerStr;
     self.RRPcenterLabel.adjustsFontSizeToFitWidth = YES;
-//    self.centerLabel.textAlignment= NSTextAlignmentCenter;
+    self.RRPcenterLabel.numberOfLines = 0;
+    self.RRPcenterLabel.textAlignment= NSTextAlignmentCenter;
     self.RRPcenterLabel.textColor = [UIColor whiteColor];
-    
     [self.coverView addSubview:self.RRPcenterLabel];
     
       //简介
     //在这里label行间距，实现原理是通过字符串长度和label宽度来计算可以显示在多少行，然后设置行与行间的间距
-    self.string = @"北京新世纪日航饭店毗邻西外大街,地理位置优越,是商旅客人理想的下榻之地";
-    self.detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.RRPcenterLabel.frame)+10, self.coverView.frame.size.width - 50, 100)];
+//    self.string = @"北京新世纪日航饭店毗邻西外大街,地理位置优越,是商旅客人理想的下榻之地";
+    self.detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.RRPcenterLabel.frame)+10, self.coverView.frame.size.width - 50, 70)];
     self.detailLabel.textColor = [UIColor whiteColor];
     self.detailLabel.font = [UIFont systemFontOfSize:10];
     self.detailLabel.textAlignment = 0;
-    self.detailLabel.text = self.string;
-//    self.detailLabel.adjustsFontSizeToFitWidth = YES;
     //自动折行设置
     self.detailLabel.lineBreakMode = 0;
     self.detailLabel.numberOfLines = 0;//0 代表自动换行，1234...... 数字是几代表几行
-    self.detailLabel.text = self.string;
-    
-    
     [self.coverView addSubview:self.detailLabel];
-    
-    
-
 
 }
-#pragma mark - 喷枪打字方法
-//tileLabel
-- (void)animationForShowtitleLableBigLabelText1
-{
-    //这是子线程里处理动画的方式 str1是我要处理的文本 , self.titleLableBig 是我用于显示这个文本的label  下面是执行动画的循环 一共执行 [_str1 length] 是字符串的长度 每执行一次,在主线程之中刷新ui 子线程休眠0.1秒中用于显示 每次文本的不同 就显示出 上一次笔者一次 少一个文本的效果了
-    for (NSInteger i = 0 ; i < [self.titleStr length] ;i++)
-    {
-        [self performSelectorOnMainThread:@selector(refreUIFortitleLableBigLabelText1:) withObject:[self.titleStr substringWithRange:NSMakeRange(0,i+1)]waitUntilDone:YES];
-        [NSThread sleepForTimeInterval:0.1f];
-    }
-    
-    
-}
-- (void)refreUIFortitleLableBigLabelText1:(NSString *)str
-{
-    self.RRPtitleLabel.text = str;
-    self.RRPtitleLabel.textAlignment = NSTextAlignmentCenter;
-}
-//centerLabel
-- (void)animationForShowtitleLableBigLabelText2
-{
-    //这是子线程里处理动画的方式 str1是我要处理的文本 , self.titleLableBig 是我用于显示这个文本的label  下面是执行动画的循环 一共执行 [_str1 length] 是字符串的长度 每执行一次,在主线程之中刷新ui 子线程休眠0.1秒中用于显示 每次文本的不同 就显示出 上一次笔者一次 少一个文本的效果了
-    for (NSInteger i = 0 ; i < [self.centerStr length] ;i++)
-    {
-        [self performSelectorOnMainThread:@selector(refreUIFortitleLableBigLabelText2:) withObject:[self.centerStr substringWithRange:NSMakeRange(0,i+1)]waitUntilDone:YES];
-        [NSThread sleepForTimeInterval:0.05f];
-    }
-    
-    
-}
-- (void)refreUIFortitleLableBigLabelText2:(NSString *)str
-{
-    self.RRPcenterLabel.text = str;
-    self.RRPcenterLabel.textAlignment= NSTextAlignmentCenter;
-}
-//detaiLabel
-- (void)animationForShowtitleLableBigLabelText3
-{
-    //这是子线程里处理动画的方式 str1是我要处理的文本 , self.titleLableBig 是我用于显示这个文本的label  下面是执行动画的循环 一共执行 [_str1 length] 是字符串的长度 每执行一次,在主线程之中刷新ui 子线程休眠0.1秒中用于显示 每次文本的不同 就显示出 上一次笔者一次 少一个文本的效果了
-    for (NSInteger i = 0 ; i < [self.string length] ;i++)
-    {
-        [self performSelectorOnMainThread:@selector(refreUIFortitleLableBigLabelText3:) withObject:[self.string substringWithRange:NSMakeRange(0,i+1)]waitUntilDone:YES];
-        [NSThread sleepForTimeInterval:0.1f];
-    }
-    
-    
-}
-- (void)refreUIFortitleLableBigLabelText3:(NSString *)str
-{
-    self.detailLabel.text = str;
-}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -166,6 +166,7 @@ typedef NS_ENUM(NSInteger, refState){
     //传值
     choicenessDetails.sceneryID = model.sid;
     choicenessDetails.sceneryName = model.sname;
+    choicenessDetails.imageURL = model.imgurl;
     //统计:收藏景区点击
     NSDictionary *dict = @{@"sceneryName":model.sname,@"sceneryID":model.sid};
     [MobClick event:@"70" attributes:dict];
