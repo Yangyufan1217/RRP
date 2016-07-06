@@ -145,9 +145,21 @@
             [[MyAlertView sharedInstance]showFrom:@"输入的手机号有误"];
         }
     }else {
-        [self downLoadDataupLoading];
-        //统计:资料修改提交按钮点击
-        [MobClick event:@"83"];
+        BOOL emile = [RRPMyCompileController validateEmail:self.emailTextField.text];
+        if (self.emailTextField.text.length != 0) {
+            if (emile == YES) {
+                [self downLoadDataupLoading];
+                //统计:资料修改提交按钮点击
+                [MobClick event:@"83"];
+                
+            }else {
+                [[MyAlertView sharedInstance]showFrom:@"输入的邮箱有误"];
+            }
+        }else {
+            [self downLoadDataupLoading];
+            //统计:资料修改提交按钮点击
+            [MobClick event:@"83"];
+        }
     }
 }
 

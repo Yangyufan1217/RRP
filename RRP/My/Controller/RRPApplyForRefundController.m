@@ -453,6 +453,7 @@ static const NSInteger maxInputCount = 255;
         //检查字典中是否含有：“<NULL>”这样的字符串，有就改为“”
         NSDictionary *nullDict = [RRPPrintObject nullDic:dict];
         NSInteger code = [[nullDict[@"ResponseHead"] valueForKey:@"code"] integerValue];
+        NSLog(@"%@",nullDict[@"ResponseBody"][@"msg"]);
         if (code == 1000)  {
             NSInteger code = [[nullDict[@"ResponseBody"] valueForKey:@"code"] integerValue];
             if (code == 2000) {

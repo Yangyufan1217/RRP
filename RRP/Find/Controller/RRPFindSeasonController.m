@@ -48,7 +48,7 @@
     NSString *urlString = [[request URL] absoluteString];
     urlString = [urlString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //判断接口是否以http://renrenpiao/开头
-    BOOL flag = [urlString hasPrefix:@"http://renrenpiao/"];
+    BOOL flag = [urlString hasPrefix:@"http://app.renrenpiao.com/"];
     if (flag) {
         //判断接javascriptnexttravelclick方法名
         if([urlString rangeOfString:@"javascriptseasonhotplayclick"].location != NSNotFound){
@@ -66,6 +66,7 @@
             NSDictionary *dict = @{@"sceneryname":self.sceneryName,@"sceneryID":self.sceneryID};
             [MobClick event:@"48" attributes:dict];
             [self.navigationController pushViewController:choicenessDetails animated:YES];
+            return NO;
         }
     }
     return YES;

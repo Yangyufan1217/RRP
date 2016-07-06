@@ -62,7 +62,8 @@
     //把接口转成UTF-8的形式
     NSString *urlString = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //判断接口是否以http://renrenpiao/开头
-    BOOL flag = [urlString hasPrefix:@"http://renrenpiao/"];
+    BOOL flag = [urlString hasPrefix:@"http://app.renrenpiao.com/"];
+    //http://app.renrenpiao.com/
     if (flag) {
         //判断接javascriptsceneryclick方法名
         if([urlString rangeOfString:@"javascriptsceneryclick"].location != NSNotFound){
@@ -81,10 +82,12 @@
             NSDictionary *dict = @{@"sceneryname":self.sceneryname,@"sceneryID":self.sceneryID};
             [MobClick event:@"52" attributes:dict];
             [self.navigationController pushViewController:choicenessDetails animated:YES];
+            return NO;
         }
     }
     return YES;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
