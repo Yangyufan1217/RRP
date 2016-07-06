@@ -161,6 +161,7 @@ typedef NS_ENUM(NSInteger, refState){
     FindRecreationModel *model = self.dataArray[indexPath.row];
     findListDetailVC.ID = model.ID;
     findListDetailVC.sceneryname = model.sceneryname;
+    findListDetailVC.imageURL = model.imgurl;
     //统计:休闲列表景区点击
     NSDictionary *dict = @{@"sceneryname":model.sceneryname,@"sceneryID":[NSString stringWithFormat:@"%ld",(long)model.ID]};
     [MobClick event:@"38" attributes:dict];

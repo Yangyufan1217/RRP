@@ -11,5 +11,6 @@
 @interface RRPFindListDetailController : UIViewController
 @property (nonatomic, assign) NSInteger ID;
 @property (nonatomic, strong) NSString *sceneryname;
+@property (nonatomic, strong) NSString *imageURL;//顶部图片
 
 @end

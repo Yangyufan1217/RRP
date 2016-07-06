@@ -181,6 +181,7 @@ typedef NS_ENUM(NSInteger, refState){
      RRPHomeSelected *model = self.homeSelectArr[indexPath.row];
     choicenessDetails.sceneryID = model.sceneryid;
     choicenessDetails.sceneryName = model.sceneryname;
+    choicenessDetails.imageURL = model.imgurl;
     //统计:门票精选更多列表景区点击
     NSDictionary *dict = @{@"sceneryName":model.sceneryname,@"sceneryID":model.sceneryid};
     [MobClick event:@"13" attributes:dict];

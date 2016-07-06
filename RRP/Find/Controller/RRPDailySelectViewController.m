@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, refState){
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic,strong)NSString *sceneryID;//景点id
 @property (nonatomic, strong) NSString *sceneryName;//景点名
+@property (nonatomic, strong)NSString *imageURL;//顶部图片
 
 @end
 
@@ -106,6 +107,7 @@ typedef NS_ENUM(NSInteger, refState){
         if (code == 1000) {
             for (NSDictionary *dic in dict[@"ResponseBody"]) {
                 RRPDailySelectModel *model = [RRPDailySelectModel mj_objectWithKeyValues:dic];
+                self.imageURL = model.imgurl;
                 [self.dataArray addObject:model];
             }
             [self.collectionView reloadData];
@@ -233,6 +235,7 @@ typedef NS_ENUM(NSInteger, refState){
             RRPChoicenessDetailsController *choicenessDetails = [[RRPChoicenessDetailsController alloc] init];
             choicenessDetails.sceneryID = self.sceneryID;
             choicenessDetails.sceneryName = self.sceneryName;
+            choicenessDetails.imageURL = [NSURL URLWithString:self.imageURL];
             //统计:每日精选列表景区点击
             NSDictionary *dict = @{@"sceneryname":self.sceneryName,@"sceneryID":self.sceneryID};
             [MobClick event:@"50" attributes:dict];

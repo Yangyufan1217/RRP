@@ -277,6 +277,7 @@ typedef NS_ENUM(NSInteger, refState){
     RRPClassifyListModel *model = self.cityListArray[indexPath.row];
     RRPChoicenessDetailsVC.sceneryID = model.ID;
     RRPChoicenessDetailsVC.sceneryName = model.sceneryname;
+    RRPChoicenessDetailsVC.imageURL = model.imgurl;
     RRPChoicenessDetailsVC.sceneryIntroduce = [NSString stringWithFormat:@"现价只需%@",model.sellerprice];
     //统计:景区列表点击
     NSDictionary *dict = @{@"sceneryName":model.sceneryname,@"sceneryID":model.ID};

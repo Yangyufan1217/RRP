@@ -786,8 +786,13 @@ typedef enum refreshState refreshState;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
         if (section == 0) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, RRPWidth/740*350)];
-            imageView.userInteractionEnabled = YES;
-        [imageView sd_setImageWithURL:self.imageURL placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
+         imageView.userInteractionEnabled = YES;
+            if (self.imageURL == nil) {
+            [imageView sd_setImageWithURL:[self.imageUrlArray firstObject] placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
+            }else{
+            [imageView sd_setImageWithURL:self.imageURL placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
+            }
+        
             
             //创建手势
             self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
