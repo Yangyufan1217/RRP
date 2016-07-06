@@ -121,12 +121,15 @@
         NSDictionary * nullDict = [RRPPrintObject nullDic:dict];
         NSInteger code = [[nullDict[@"ResponseHead"] valueForKey:@"code"] integerValue];
         NSString *str = nullDict[@"ResponseHead"][@"desc"];
+        NSLog(@"%@",str);
         if (code == 1000)  {
             [[MyAlertView sharedInstance]showFrom:str];
             //统计:发表评论发表按钮点击
             NSDictionary *stasticsDic = [NSDictionary dictionaryWithDictionary:dic];
             [MobClick event:@"68" attributes:stasticsDic];
             [self.navigationController popViewControllerAnimated:YES];
+        }else {
+            [[MyAlertView sharedInstance]showFrom:str];
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"%@",error);
