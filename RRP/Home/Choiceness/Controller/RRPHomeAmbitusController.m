@@ -178,6 +178,7 @@ typedef NS_ENUM(NSInteger, refState){
     RRPPeripheryModel *model = self.homeAmbitusArr[indexPath.row];
     choicenessDetails.sceneryID = model.ID;
     choicenessDetails.sceneryName = model.sceneryname;
+    choicenessDetails.imageURL = model.imgurl;
     [self.navigationController pushViewController:choicenessDetails animated:YES];
 }
 

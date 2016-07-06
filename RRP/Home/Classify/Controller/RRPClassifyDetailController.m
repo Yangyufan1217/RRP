@@ -152,7 +152,7 @@ typedef NS_ENUM(NSInteger, refState){
     //传值ID
     RRPChoicenessDetailsVC.sceneryID = classifyListModel.ID;
     RRPChoicenessDetailsVC.sceneryName = classifyListModel.sceneryname;
-  
+    RRPChoicenessDetailsVC.imageURL = classifyListModel.imgurl;
     [self.navigationController pushViewController:RRPChoicenessDetailsVC animated:YES];
     
 }

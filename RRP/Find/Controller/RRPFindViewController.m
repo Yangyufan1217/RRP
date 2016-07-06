@@ -362,6 +362,7 @@ typedef NS_ENUM(NSInteger, refState){
         RRPFindModel *findModel = self.listArray[indexPath.row];
         findListDetailVC.ID = findModel.ID;
         findListDetailVC.sceneryname = findModel.sceneryname;
+        findListDetailVC.imageURL = findModel.imgurl;
         //统计:发现通屏大图点击
         NSDictionary *dict = @{@"sceneryname":findModel.sceneryname,@"sceneryID":[NSString stringWithFormat:@"%ld",findModel.ID]};
         [MobClick event:@"51" attributes:dict];

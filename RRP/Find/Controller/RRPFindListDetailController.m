@@ -77,6 +77,7 @@
             RRPChoicenessDetailsController *choicenessDetails = [[RRPChoicenessDetailsController alloc] init];
             choicenessDetails.sceneryID = self.sceneryID;
             choicenessDetails.sceneryName = self.sceneryName;
+            choicenessDetails.imageURL = [NSURL URLWithString:self.imageURL];
             //统计:景区介绍html5页面末端的
             NSDictionary *dict = @{@"sceneryname":self.sceneryname,@"sceneryID":self.sceneryID};
             [MobClick event:@"52" attributes:dict];
