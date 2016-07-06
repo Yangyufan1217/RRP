@@ -159,6 +159,7 @@ typedef NS_ENUM(NSInteger, refState){
     {
         saleDetailVC.sceneryName = saleListModel.sceneryname;
     }
+    saleDetailVC.imageURL = saleListModel.imgurl;
     //统计:特价列表景区点击
     NSDictionary *dict = @{@"sceneryname":saleDetailVC.sceneryName,@"sceneryID":[NSString stringWithFormat:@"%ld",saleListModel.sceneryid]};
     [MobClick event:@"44" attributes:dict];
