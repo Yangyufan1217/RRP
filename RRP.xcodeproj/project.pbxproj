@@ -47,7 +47,6 @@
 		1B0C04F41CA4E3480067A910 /* BoPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C04EC1CA4E3480067A910 /* BoPhotoPickerViewController.m */; };
 		1B0C04F51CA4E3480067A910 /* BoTapAssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C04EE1CA4E3480067A910 /* BoTapAssetView.m */; };
 		1B0C05071CAB81030067A910 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C05061CAB81030067A910 /* Images.xcassets */; };
-		1B0C06FD1CACEF480067A910 /* XLCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C06FC1CACEF480067A910 /* XLCycleScrollView.m */; };
 		1B0C07901CACFC290067A910 /* RRPDataRequestHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C078D1CACFC290067A910 /* RRPDataRequestHandle.m */; };
 		1B0C07911CACFC290067A910 /* RRPDataRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C078F1CACFC290067A910 /* RRPDataRequestModel.m */; };
 		1B0C079C1CAD1A170067A910 /* FindPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C07941CAD1A170067A910 /* FindPassWordViewController.m */; };
@@ -445,8 +444,6 @@
 		1B0C04ED1CA4E3480067A910 /* BoTapAssetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoTapAssetView.h; sourceTree = "<group>"; };
 		1B0C04EE1CA4E3480067A910 /* BoTapAssetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoTapAssetView.m; sourceTree = "<group>"; };
 		1B0C05061CAB81030067A910 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1B0C06FB1CACEF480067A910 /* XLCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCycleScrollView.h; sourceTree = "<group>"; };
-		1B0C06FC1CACEF480067A910 /* XLCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCycleScrollView.m; sourceTree = "<group>"; };
 		1B0C078C1CACFC290067A910 /* RRPDataRequestHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPDataRequestHandle.h; sourceTree = "<group>"; };
 		1B0C078D1CACFC290067A910 /* RRPDataRequestHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPDataRequestHandle.m; sourceTree = "<group>"; };
 		1B0C078E1CACFC290067A910 /* RRPDataRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPDataRequestModel.h; sourceTree = "<group>"; };
@@ -1280,8 +1277,6 @@
 			children = (
 				1BD5D2611CAD4E4300AA517F /* BaseViewController.h */,
 				1BD5D2621CAD4E4300AA517F /* BaseViewController.m */,
-				1B0C06FB1CACEF480067A910 /* XLCycleScrollView.h */,
-				1B0C06FC1CACEF480067A910 /* XLCycleScrollView.m */,
 				1B051B291C72C16000B83E4C /* ViewController.h */,
 				1B051B2A1C72C16000B83E4C /* ViewController.m */,
 			);
@@ -2550,7 +2545,6 @@
 				1BDE86911C9AA4850081B69E /* RRPMyHeadPortraitCell.m in Sources */,
 				5142E4FF1CD265D2009DC99C /* RRPCityListViewController.m in Sources */,
 				1BD2050F1CCFBD6E008EF9D9 /* RRPMyProtocolController.m in Sources */,
-				1B0C06FD1CACEF480067A910 /* XLCycleScrollView.m in Sources */,
 				1BDE86FA1CA03BBE0081B69E /* UISlider+Night.m in Sources */,
 				1B64332B1CC08819001B0B85 /* RRPHomeOneTableViewCell.m in Sources */,
 				1BDE867B1C9911FC0081B69E /* RRPMyCollectListCell.m in Sources */,
