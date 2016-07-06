@@ -14,5 +14,6 @@
  */
 @property (nonatomic,strong)NSString *sceneryID;//景点id
 @property (nonatomic,strong)NSString *sceneryName;//景点名称
+@property (nonatomic,strong)NSString *imageURL;//顶部图片
 @property (nonatomic, strong) NSString *sceneryIntroduce;//景区介绍
 @end

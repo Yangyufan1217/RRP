@@ -15,7 +15,6 @@
     self.mapImageView.image = [UIImage imageNamed:@"sign-list-gps"];
     self.mapLabel.backgroundColor = [UIColor clearColor];
     self.mapLabel.text = @"北京市密云县石城镇大关桥黑龙潭景区";
-    self.mapLabel.adjustsFontSizeToFitWidth = YES;//改变字体大小填满label
     self.moreImageView.image = [UIImage imageNamed:@"home-middleList-more"];
 }
 

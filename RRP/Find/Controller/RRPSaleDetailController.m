@@ -484,7 +484,7 @@ typedef NS_ENUM(NSInteger, refState){
             RRPSaleDetailPicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RRPSaleDetailPicCell" forIndexPath:indexPath];
             //取消点击样式
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell showDataWithArray:self.imageUrlArray];
+            [cell showDataWithArray:self.imageUrlArray topImage:self.imageURL];
             return cell;
         }else if (indexPath.row == 1) {
             //景点名

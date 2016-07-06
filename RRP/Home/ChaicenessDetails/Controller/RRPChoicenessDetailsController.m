@@ -787,9 +787,7 @@ typedef enum refreshState refreshState;
         if (section == 0) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, RRPWidth/740*350)];
             imageView.userInteractionEnabled = YES;
-//        imageView.image = [UIImage imageNamed:@"精选封面"];
-        NSURL *imageURL = [NSURL URLWithString:[self.imageUrlArray firstObject]];
-        [imageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
+        [imageView sd_setImageWithURL:self.imageURL placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
             
             //创建手势
             self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
@@ -992,6 +990,7 @@ typedef enum refreshState refreshState;
     [self requestDataWithPage:1 ID:model.ID];
     self.sceneryID = model.ID;
     self.sceneryName = model.sceneryname;
+    self.imageURL = model.imgurl;
     self.sceneryIntroduce = [NSString stringWithFormat:@"%@星级 %@ 价格:%@",model.grade,model.label,model.sellerprice];
     self.navigationItem.title = model.sceneryname;
     //统计:周边景区点击

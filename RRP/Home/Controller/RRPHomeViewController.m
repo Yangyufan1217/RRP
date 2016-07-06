@@ -736,6 +736,7 @@ typedef enum refreshState refreshState;
         //传值
         choicenessDetails.sceneryID = homeSelected.sceneryid;
         choicenessDetails.sceneryName = homeSelected.sceneryname;
+        choicenessDetails.imageURL = homeSelected.imgurl;
         //统计:首页门票精选点击
         NSDictionary *dict = @{@"sceneryName":homeSelected.sceneryname,@"sceneryID":homeSelected.sceneryid};
         [MobClick event:@"9" attributes:dict];
