@@ -792,8 +792,7 @@ typedef enum refreshState refreshState;
             }else{
             [imageView sd_setImageWithURL:self.imageURL placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
             }
-        
-            
+    
             //创建手势
             self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
             //向视图添加手势

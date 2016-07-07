@@ -10,6 +10,15 @@
 #import "RRPExplainCell.h"
 #import "RRPPaymentTypeCell.h"
 #import "PaymentController.h"
+//微信支付
+#import "getIPhoneIP.h"
+#import "DataMD5.h"
+#import <CommonCrypto/CommonDigest.h>
+#import "XMLDictionary.h"
+//支付宝支付
+#import "Order.h"
+#import "DataSigner.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface RRPPaymentController ()<UITableViewDataSource,UITableViewDelegate>{
     BOOL click;
@@ -45,7 +54,7 @@
      *  type = 0 代表可以使用支付宝 微信  银联支付
      *  type = 1 代表不可以使用支付宝 微信  银联支付
      */
-    self.type = 1;
+    self.type = 0;
     
     
 }
@@ -96,15 +105,18 @@
         payment.money = [NSString stringWithFormat:@"%.2f",self.money];
         [self.navigationController pushViewController:payment animated:YES];
     }else if (self.number == 1) {
+        [self AliPay];
         //统计:支付方式点击
         NSDictionary *dict = @{@"paytype":@"支付宝"};
         [MobClick event:@"29" attributes:dict];
 //        NSLog(@"支付宝");
     }else if (self.number == 2) {
+        
+        [self WeiChatPay];
         //统计:支付方式点击
         NSDictionary *dict = @{@"paytype":@"微信"};
         [MobClick event:@"29" attributes:dict];
-        //        NSLog(@"微信");
+      //        NSLog(@"微信");
     }else if (self.number == 3) {
         //统计:支付方式点击
         NSDictionary *dict = @{@"paytype":@"银联"};
@@ -112,6 +124,210 @@
 //        NSLog(@"银联");
     }
 }
+
+#pragma mark - 微信支付
+//************************微信支付*****************************//
+// 生成15位随机订单号
+- (NSString *)generateTradeNumber {
+    static int kNumber = 15;
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((unsigned)time(0));
+    for (int i = 0; i < kNumber; i++) {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneChar = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneChar];
+    }
+    return resultStr;
+}
+
+// 将订单号使用md5加密
+- (NSString *)md5:(NSString *)str {
+    const char *cStr = [str UTF8String];
+    unsigned char result[16]= "0123456789abcdef";
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), result); // This is the md5 call
+    return [NSString stringWithFormat:
+            @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
+}
+- (void)WeiChatPay
+{
+    NSString *appid, *mch_id, *nonce_str, *out_trade_no, *body, *total_fee, *spbill_create_ip, *notify_url, *trade_type, *partner, *sign;
+    
+    // 1.微信分配的公众账号APPID
+    appid = @"wxe6dd197ef305900d";
+    
+    // 2.微信支付分配的商户号
+    mch_id = @"1343768401";
+    
+    // 产生随机字符串，这里最好使用和安卓端一致的生成逻辑
+    NSString *num =[self generateTradeNumber];
+    nonce_str = num;
+    
+    // 3.随机产生订单号用于测试，正式使用请换成你从自己服务器获取的订单号
+    out_trade_no = self.orderno;
+    
+    // 4.订单描述
+    //    body = @"这里用作订单描述";
+    body = @"人人票支付";
+    
+    //    [[NSUserDefaults standardUserDefaults] setObject:num forKey:@"trade_no"];
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // 5.交易价格赋值1表示0.01元，赋值10表示0.1元(一定要输入整数)
+    //    CGFloat totalFee = [self.order.count floatValue];
+    //    total_fee = [NSString stringWithFormat:@"%.f", totalFee * 100];
+    //    NSLog(@"微信支付金额：totalFee = %.f    total_fee = %@", totalFee, total_fee);
+    total_fee = @"1";
+    
+    // 6.获取本机IP地址，请在WIFI环境下测试，否则获取的ip地址为error，正确格式应该是8.8.8.8
+    spbill_create_ip = [getIPhoneIP getIPAddress];
+    
+    // 7.交易结果通知网站，此处用于测试，随意填写，正式使用时填写正确网站 (接收微信支付异步通知回调地址)
+    notify_url = @"www.baidu.com";
+    
+    // 8.交易类型 JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付、WAP--手机浏览器H5支付
+    trade_type = @"APP";
+    
+    // 9.商户密钥
+    partner = @"e48da717d690e3037e239a91d73fe4f5";
+    
+    // 10.获取sign签名
+    DataMD5 *data = [[DataMD5 alloc] initWithAppid:appid body:body mch_id:mch_id nonce_str:nonce_str notify_url:notify_url out_trade_no:out_trade_no partner_id:partner spbill_create_ip:spbill_create_ip total_fee:total_fee trade_type:trade_type];
+    sign = [data getSignForMD5];
+    
+    // 设置参数并转化成xml格式
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:appid forKey:@"appid"]; // 公众账号ID
+    [dic setValue:mch_id forKey:@"mch_id"]; // 商户号
+    [dic setValue:nonce_str forKey:@"nonce_str"]; // 随机字符串
+    [dic setValue:sign forKey:@"sign"]; // 签名
+    [dic setValue:body forKey:@"body"]; // 商品描述
+    [dic setValue:out_trade_no forKey:@"out_trade_no"]; // 订单号
+    [dic setValue:total_fee forKey:@"total_fee"]; // 金额
+    [dic setValue:spbill_create_ip forKey:@"spbill_create_ip"]; // 终端IP
+    [dic setValue:notify_url forKey:@"notify_url"]; // 通知地址
+    [dic setValue:trade_type forKey:@"trade_type"]; // 交易类型
+    
+    NSString *string = [dic XMLString];
+    [self payRequest:string];
+    
+}
+- (void)payRequest:(NSString *)xml {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    // 这里传入的xml字符串只是形似xml，但是不是正确是xml格式，需要使用AF方法进行转义
+    manager.responseSerializer = [[AFHTTPResponseSerializer alloc] init];
+    [manager.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"https://api.mch.weixin.qq.com/pay/unifiedorder" forHTTPHeaderField:@"SOAPAction"];
+    [manager.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error) {
+        return xml;
+    }];
+    // 发起请求 先调用该接口生成预支付交易单，返回正确的预支付交易回话标识后再按扫码、JSAPI、APP等不同场景生成交易串调起支付。
+    [manager POST:@"https://api.mch.weixin.qq.com/pay/unifiedorder" parameters:xml success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"responseString is %@",responseString);
+        // 将微信返回的xml数据解析转义成字典
+        NSDictionary *dic = [NSDictionary dictionaryWithXMLString:responseString];
+        NSLog(@"%@",dic);
+        // 判断返回的许可
+        if ([[dic objectForKey:@"result_code"] isEqualToString:@"SUCCESS"] && [[dic objectForKey:@"return_code"] isEqualToString:@"SUCCESS"] ) {
+            // 发起微信支付，设置参数
+            PayReq *request = [[PayReq alloc] init];
+            request.partnerId = [dic objectForKey:@"mch_id"];
+            request.prepayId = [dic objectForKey:@"prepay_id"];
+            request.package = @"Sign=WXPay";
+            request.nonceStr = [dic objectForKey:@"nonce_str"];
+            // 将当前事件转化成时间戳
+            NSDate *datenow = [NSDate date];
+            NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+            UInt32 timeStamp = [timeSp intValue];
+            request.timeStamp = timeStamp;
+            NSLog(@"%u",(unsigned int)timeStamp);
+            DataMD5 *md5 = [[DataMD5 alloc] init];
+            request.sign = [md5 createMD5SingForPay:@"wxe6dd197ef305900d" partnerid:request.partnerId prepayid:request.prepayId package:request.package noncestr:request.nonceStr timestamp:request.timeStamp];
+            NSLog(@"%@",request.sign);
+            // 调用微信 (函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。)
+            [WXApi sendReq:request];
+        } else {
+            NSLog(@"参数不正确，请检查参数!");
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error is %@", error);
+    }];
+}
+
+//************************微信支付*****************************//
+#pragma mark - 支付宝支付
+- (void) AliPay
+{
+    NSLog(@"支付宝支付");
+    NSString *partner = @"2088121612028197";
+    NSString *seller = @"pay@renrenpiao.com";
+    NSString *privateKey =@"MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAOW5Kpwezod63hL4i09iRjolXIVCVuBGvsrKrUzKvkLq/oCWnsEeLnMrpBZjwSXdKnfsbcvDnTKIczhwY0JUAYmRf/O7qKnj5ySFltPzZPkCJKe977X8wKornU/oOrfCU1FIq5oW93XhiLZ/V+LfEfSdLYJsOzVOoWcxANjT/yBNAgMBAAECgYAq3oErHTyhX7Zth+BHcil01GANpjGcLNeR9Hyepf8Xcc8IpBMAKue0KmK2our6a+lu87oRmnGNapVF5QNA73hRn0iZtNfzQLq0MiDc2atowzo8cr3FlvU5knSxx2zaeFFnlQhaS1xl3N8WCdGdK5U7GTS31x8FKjW3ruKQuQHjwQJBAPNCv/6Pe7A5+bncOE0k+LYG9TzOS9YhFPpyEK7fveZ8obF/YrEhyqa9iPx/cFISTwDV00L2bNwxeP3KpUIgGCkCQQDxwO2grgGEugAI9EbHhtOSraIoKhLZPbwh7L0bfi+hOzQ/zai6+Nnhun8rW0CqVkqsIRJB3eqf12vSdUySXFuFAkEAoUoHvMPr0buO7YGrPtMdqKtSXN+3fqFupGOO1jP5WGIYX3TDvghWslmHA0uH8JK9GSOtMH/tS83tl/CNxBs9iQJBAM5wzXrUnH9WxgjfcEGaJLmwhDSAGTBhw3HE04fSraGlCO0jFd7z+jsEIuxHNGVA4usyIoEUm/J65pwFhqnFLHECQC5s/iB42K3Wx6xLhdv5u8OAFSj6Jv9XLX3WhEAjRRPN6l7UZvn4O2xALhS2MXUhLe4+wd5bSPr9OgzugnVYQsA=";
+    
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = partner;
+    order.sellerID = seller;
+    
+    order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.subject = @"测试"; //商品标题
+    order.body = @"啦啦啦"; //商品描述
+    order.totalFee = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+    
+    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showURL = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"alisdkdemo";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
+
+}
+//随机产生订单号
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((unsigned)time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
+}
+
+/*************************支付宝支付****************************/
 
 
 

@@ -46,6 +46,10 @@
 #import "DKNightVersion.h"
 #import "RRPAllCityHandle.h"
 #import "UMMobClick/MobClick.h"
+//微信支付
+#import "WXApi.h"
+#import "WXApiObject.h"
+
 
 //屏宽屏高
 #define RRPWidth [UIScreen mainScreen].bounds.size.width
