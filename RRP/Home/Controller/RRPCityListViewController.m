@@ -192,17 +192,18 @@
     if (section == 0) {
         return 69;
     }else if (section == 1) {
-        if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber != 0) {
-            if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber % 3 == 0) {
-                return  [RRPAllCityHandle shareAllCityHandle].hotCityNumber/3*38+40;
-            }else{
-                
-                return  ([RRPAllCityHandle shareAllCityHandle].hotCityNumber/3+1)*38+40;
-            }
-        }else
-        {
-            return 23;
-        }
+//        if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber != 0) {
+//            if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber % 3 == 0) {
+//                return  [RRPAllCityHandle shareAllCityHandle].hotCityNumber/3*38+40;
+//            }else{
+//                
+//                return  ([RRPAllCityHandle shareAllCityHandle].hotCityNumber/3+1)*38+40;
+//            }
+//        }else
+//        {
+//            return 23;
+//        }
+        return 200;
         
     }else {
         return 23;

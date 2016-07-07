@@ -58,12 +58,14 @@
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
         
-        if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber % 3 == 0) {
-            self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,23, RRPWidth,[RRPAllCityHandle shareAllCityHandle].hotCityNumber/3*38+17) collectionViewLayout:self.flowLayout];
-            
-        }else {
-            self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,23, RRPWidth,([RRPAllCityHandle shareAllCityHandle].hotCityNumber/3+1)*38+17) collectionViewLayout:self.flowLayout];
-        }
+//        if ([RRPAllCityHandle shareAllCityHandle].hotCityNumber % 3 == 0) {
+//            self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,23, RRPWidth,[RRPAllCityHandle shareAllCityHandle].hotCityNumber/3*38+17) collectionViewLayout:self.flowLayout];
+//            
+//        }else {
+//            self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,23, RRPWidth,([RRPAllCityHandle shareAllCityHandle].hotCityNumber/3+1)*38+17) collectionViewLayout:self.flowLayout];
+//        }
+        
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,23, RRPWidth,177) collectionViewLayout:self.flowLayout];
         self.collectionView.dataSource = self;
         self.collectionView.delegate = self;
         self.collectionView.showsVerticalScrollIndicator = NO;

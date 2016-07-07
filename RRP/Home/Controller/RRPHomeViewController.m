@@ -16,7 +16,6 @@
 #import "RRPCityListViewController.h"
 #import "RRPDataRequestModel.h"
 #import "RRPHomeSelected.h"
-#import "XLCycleScrollView.h"
 #import "RRPHomeCircleModel.h"
 #import "RRPHomeSearchModel.h"
 #import "RRPHomeSearchCell.h"
@@ -24,7 +23,8 @@
 #import "RRPHomeClassifyModel.h"
 #import "RRPFindTopModel.h"
 #import "RRPAllCityHandle.h"
-@interface RRPHomeViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XLCycleScrollViewDatasource,XLCycleScrollViewDelegate,CLLocationManagerDelegate> {
+#import "SDCycleScrollView.h"
+@interface RRPHomeViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CLLocationManagerDelegate,SDCycleScrollViewDelegate> {
     BOOL Transform;
 }
 enum refreshState
@@ -45,7 +45,6 @@ typedef enum refreshState refreshState;
 @property (nonatomic,strong)NSMutableArray *showDateArray;//展示数组
 @property (nonatomic,strong)NSMutableArray *horizonShowArray;
 @property (nonatomic,strong)NSMutableArray *searchArray;//搜索数据
-@property (nonatomic, strong) XLCycleScrollView *cycleView;//轮播图
 @property (nonatomic, strong)NSDictionary *circleDic;
 @property (nonatomic, strong)NSDictionary *homeClassifyDic;
 @property (nonatomic,strong)NSMutableArray *circlePicArray;//轮播图数组
@@ -108,9 +107,6 @@ typedef enum refreshState refreshState;
     self.moreArray = [@[] mutableCopy];
 
     
-    
-    
-    
     //取消滚动视图的自适应
     self.automaticallyAdjustsScrollViewInsets = NO;
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -124,6 +120,7 @@ typedef enum refreshState refreshState;
 
     
     [self layoutsearchBar];
+   
     //注册cell
     UINib *nib = [UINib nibWithNibName:@"RRPHomeOneTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"RRPHomeOneTableViewCell"];
@@ -650,14 +647,20 @@ typedef enum refreshState refreshState;
     if (tableView == self.tableView ) {
         if (section == 0) {
             view.dk_backgroundColorPicker = DKColorWithColors(IWColor(240, 240, 240), IWColor(200, 200, 200));
+            NSMutableArray *cyclePic = [[NSMutableArray alloc] init];
+            for (RRPHomeCircleModel *circleModel in self.circlePicArray) {
+                [cyclePic addObject:circleModel.imgurl];
+            }
             //轮播图View
-            self.cycleView = [[XLCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, RRPWidth/750*238)];
-            self.cycleView.backgroundColor = [UIColor whiteColor];
-            self.cycleView.delegate = self;
-            self.cycleView.datasource = self;
-            [view addSubview:self.cycleView];
+            SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, RRPWidth, RRPWidth/750*238) delegate:self placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
+            cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+            cycleScrollView.delegate = self;
+            cycleScrollView.currentPageDotColor = [UIColor whiteColor];
+            cycleScrollView.imageURLStringsGroup = cyclePic;
+            [view addSubview:cycleScrollView];
+
             //分类View
-            self.classifyView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.cycleView.frame), RRPWidth, 190)];
+            self.classifyView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(cycleScrollView.frame), RRPWidth, 190)];
             self.classifyView.backgroundColor = [UIColor whiteColor];
             self.classifyView.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(150, 150, 150));
             [view addSubview:self.classifyView];
@@ -693,38 +696,20 @@ typedef enum refreshState refreshState;
     
     }
 }
-#pragma mark - 轮播图代理方法
-//图片数量
-- (NSInteger)numberOfPages
+#pragma mark - SDCycleScrollViewDelegate
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
-    return self.circlePicArray.count;
-   
-}
-//显示图片
-- (UIView *)pageAtIndex:(NSInteger)index
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, self.cycleView.frame.size.height)];
-    imageView.clipsToBounds = YES;
-    if (self.circlePicArray.count != 0) {
-        self.circleModel = self.circlePicArray[index];
-    }
-    [imageView sd_setImageWithURL:self.circleModel.imgurl placeholderImage:[UIImage imageNamed:@"当季热玩750-326"]];
-    return imageView;
-}
-//轮播图点击方法
-- (void)didClickPage:(XLCycleScrollView *)csView atIndex:(NSInteger)index
-{
-    
-    RRPChoicenessDetailsController *choicenessDetails = [[RRPChoicenessDetailsController alloc] init];
-    RRPHomeCircleModel *circleModel = self.circlePicArray[index];
-    //传值
-    choicenessDetails.sceneryID = circleModel.ID;
-    choicenessDetails.sceneryName = circleModel.sceneryname;
-    //统计:轮播图点击
-    NSDictionary *dict = @{@"sceneryname":circleModel.sceneryname,@"ID":circleModel.ID};
-    [MobClick event:@"7" attributes:dict];
-    [self.navigationController pushViewController:choicenessDetails animated:YES];
-    
+        RRPChoicenessDetailsController *choicenessDetails = [[RRPChoicenessDetailsController alloc] init];
+        RRPHomeCircleModel *circleModel = self.circlePicArray[index];
+        //传值
+        choicenessDetails.sceneryID = circleModel.ID;
+        choicenessDetails.sceneryName = circleModel.sceneryname;
+        //统计:轮播图点击
+        NSDictionary *dict = @{@"sceneryname":circleModel.sceneryname,@"ID":circleModel.ID};
+        [MobClick event:@"7" attributes:dict];
+        [self.navigationController pushViewController:choicenessDetails animated:YES];
+
 }
 
 //cell点击

@@ -11,6 +11,8 @@ pod 'MBProgressHUD'
 
 pod 'MJRefresh','~>2.0.2'
 
+pod 'SDCycleScrollView','~> 1.3'
+
 pod "WeiboSDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 
 pod 'SDWebImage', '~> 3.7.5'
