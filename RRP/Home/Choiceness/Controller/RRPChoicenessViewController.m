@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, refState){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.view.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(200, 200, 200));
+    self.view.dk_backgroundColorPicker = DKColorWithColors(IWColor(236, 236, 236), IWColor(200, 200, 200));
     self.navigationItem.title = @"精选门票";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:(UIBarButtonItemStyleDone) target:self action:@selector(returnAction:)];
     self.navigationItem.leftBarButtonItem.tintColor = IWColor(0, 122, 255);
@@ -102,17 +102,15 @@ typedef NS_ENUM(NSInteger, refState){
 - (UITableView *)tableView {
     if (_tableView == nil) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,RRPWidth, RRPHeight+49)];
-        self.tableView.backgroundColor = IWColor(246, 246, 246);
-        self.tableView.dk_backgroundColorPicker = DKColorWithColors(IWColor(246, 246, 246), IWColor(200, 200, 200));
+        self.tableView.backgroundColor = IWColor(236, 236, 236);
+        self.tableView.dk_backgroundColorPicker = DKColorWithColors(IWColor(236, 236, 236), IWColor(200, 200, 200));
         self.tableView.tableFooterView = [[UIView alloc] init];
         self.tableView.showsVerticalScrollIndicator = NO;
-//        self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        
         self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
         self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-        
     }
     return _tableView;
 }
@@ -151,6 +149,9 @@ typedef NS_ENUM(NSInteger, refState){
     //取消点击样式
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
      RRPHomeSelected *model = self.homeSelectArr[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backView.layer.masksToBounds = YES;
+    cell.backView.layer.cornerRadius = 5;
     [cell showDataWithTicketSelectedModel:model];
      return cell;
 }
@@ -159,19 +160,19 @@ typedef NS_ENUM(NSInteger, refState){
 #pragma mark - UITableViewDelegate
 //cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 118;
+    return 80;
 }
 //区头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 118;
+        return 106;
     }else {
         return 0;
     }
 }
 //区头视图
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, 118)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, 106)];
         imageView.image = [UIImage imageNamed:@"门票精选"];
         return imageView;
 }

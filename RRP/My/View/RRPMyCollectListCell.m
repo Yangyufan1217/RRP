@@ -17,78 +17,56 @@
 @implementation RRPMyCollectListCell
 
 - (void)awakeFromNib {
-    self.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(200, 200, 200));
+    self.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(150, 150, 150));
     self.string = @"￥80";
-    self.RRPtitleLabel.font = [UIFont systemFontOfSize:16];
-    self.RRPtitleLabel.textColor = IWColor(106, 106, 106);
-    self.RRPtitleLabel.backgroundColor = [UIColor clearColor];
+    self.senicName.font = [UIFont systemFontOfSize:15];
+    self.senicName.textColor = IWColor(106, 106, 106);
+    self.senicName.backgroundColor = [UIColor clearColor];
+    self.senicName.lineBreakMode = NSLineBreakByCharWrapping;//以单词为显示单位显示，后面部分省略不显示。
+    
+    self.recommendLabel.font = [UIFont systemFontOfSize:10];
+    self.recommendLabel.textColor = IWColor(106, 106, 106);
+    self.recommendLabel.lineBreakMode = NSLineBreakByCharWrapping;
     
     self.moneyLabel.textColor = IWColor(255, 13, 69);
-    self.moneyLabel.font = [UIFont systemFontOfSize:23];
+    self.moneyLabel.font = [UIFont systemFontOfSize:10];
     self.moneyLabel.backgroundColor = [UIColor clearColor];
     
-    self.originalLabel.textColor = IWColor(159, 159, 159);
-    self.originalLabel.font = [UIFont systemFontOfSize:12];
-    self.originalLabel.backgroundColor = [UIColor clearColor];
-    CGSize detailSize = [self.string sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(200, MAXFLOAT) lineBreakMode:0];
+    self.comNumberLabel.textColor = IWColor(159, 159, 159);
+    self.comNumberLabel.font = [UIFont systemFontOfSize:10];
+    self.comNumberLabel.backgroundColor = [UIColor clearColor];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 6, detailSize.width, 1)];
-    view.backgroundColor = IWColor(159, 159, 159);
-    [self.originalLabel addSubview:view];
+    self.satisfactionNumber.textColor = IWColor(255, 13, 69);
+    self.satisfactionNumber.font = [UIFont systemFontOfSize:10];
+    self.satisfactionNumber.backgroundColor = [UIColor clearColor];
+    
+    self.satisfactionLabel.textColor = IWColor(167, 167, 167);
+    self.satisfactionLabel.text = @"景区满意度:";
+    self.satisfactionLabel.font = [UIFont systemFontOfSize:10];
     
     
-    self.commentNumberLabel.textColor = IWColor(159, 159, 159);
-    self.commentNumberLabel.font = [UIFont systemFontOfSize:12];
-    self.commentNumberLabel.backgroundColor = [UIColor clearColor];
+    self.distanceLabel.textColor = IWColor(159, 159, 159);
+    self.distanceLabel.font = [UIFont systemFontOfSize:10];
+    self.distanceLabel.backgroundColor = [UIColor clearColor];
     
-    self.satisfyLabel.textColor = IWColor(255, 13, 69);
-    self.satisfyLabel.font = [UIFont systemFontOfSize:12];
-    self.satisfyLabel.backgroundColor = [UIColor clearColor];
-    
-    self.typeLabel.textColor = IWColor(255, 13, 69);
-    self.typeLabel.font = [UIFont systemFontOfSize:12];
-    self.typeLabel.backgroundColor = [UIColor clearColor];
-    
-    self.journeyLabel.textColor = IWColor(159, 159, 159);
-    self.journeyLabel.font = [UIFont systemFontOfSize:12];
-    self.journeyLabel.backgroundColor = [UIColor clearColor];
-    
-    self.cityLabel.textColor = IWColor(159, 159, 159);
-    self.cityLabel.font = [UIFont systemFontOfSize:12];
-    self.cityLabel.backgroundColor = [UIColor clearColor];
-    
-    self.contentImageView.image = [UIImage imageNamed:@"精选内容图"];
-    self.RRPtitleLabel.text = @"凤凰古城";
-    self.moneyLabel.text = @"200";
-    self.originalLabel.text = self.string;
-    self.commentNumberLabel.text = @"1090条点评";
-    self.satisfyLabel.text = @"99%";
-    self.typeLabel.text = @"4A";
-    self.journeyLabel.text = @"30km以上";
-    self.cityLabel.text = @"城市观光";
-    self.seneryLabel.text = @"景区";
-    self.cityLabel.hidden = YES;
+    self.headImageView.image = [UIImage imageNamed:@"精选内容图"];
+    self.senicName.text = @"凤凰古城";
+    self.moneyLabel.text = @"￥200";
+    self.comNumberLabel.text = @"1090条评论";
+    self.satisfactionNumber.text = @"99%";
+    self.distanceLabel.text = @"30km以上";
+    self.distanceLabel.hidden = YES;
 }
 //赋值
 - (void)showDataWithModel:(RRPCollectionModel *)model
 {
-    [self.contentImageView sd_setImageWithURL:model.imgurl placeholderImage:[UIImage imageNamed:@"节日700-350"]];
-    self.RRPtitleLabel.text = model.sname;
+    [self.headImageView sd_setImageWithURL:model.imgurl placeholderImage:[UIImage imageNamed:@"节日700-350"]];
+    self.senicName.text = model.sname;
     NSString *price = [model.sellerprice substringWithRange:NSMakeRange(0, [model.sellerprice length]-3)];
-    self.moneyLabel.text = price;
-    self.commentNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.commentnum];
-    self.satisfyLabel.text = model.Praisepercentage;
-    if ([model.grade isEqualToString:@"0"]) {
-        self.typeLabel.hidden = YES;
-        self.seneryLabel.hidden = YES;
-    }else
-    {
-      self.typeLabel.hidden = NO;
-      self.seneryLabel.hidden = NO;
-      self.typeLabel.text = [NSString stringWithFormat:@"%@A",model.grade];
-    }
-    self.journeyLabel.hidden = YES;
-    self.cityLabel.text = model.classname;
+    self.moneyLabel.text = [NSString stringWithFormat:@"￥%@元起",price];
+    self.comNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.commentnum];
+    self.satisfactionNumber.text = model.Praisepercentage;
+    self.recommendLabel.text = model.summary;
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -42,9 +42,9 @@
     self.topLine.backgroundColor = IWColor(242, 245, 247);
     [backView addSubview:self.topLine];
     
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 40, 17)];
-    self.nameLabel.font = [UIFont systemFontOfSize:16];
-    self.nameLabel.textColor =
+//    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 40, 17)];
+//    self.nameLabel.font = [UIFont systemFontOfSize:16];
+//    self.nameLabel.textColor =
  
 }
 @end

@@ -20,115 +20,72 @@
 - (void)awakeFromNib {
     self.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(150, 150, 150));
     self.string = @"￥80";
-    self.RRPtitleLabel.font = [UIFont systemFontOfSize:16];
-    self.RRPtitleLabel.textColor = IWColor(106, 106, 106);
-    self.RRPtitleLabel.backgroundColor = [UIColor clearColor];
+    self.senicName.font = [UIFont systemFontOfSize:15];
+    self.senicName.textColor = IWColor(106, 106, 106);
+    self.senicName.backgroundColor = [UIColor clearColor];
+    self.senicName.lineBreakMode = NSLineBreakByCharWrapping;//以单词为显示单位显示，后面部分省略不显示。
+
+    self.recommendLabel.font = [UIFont systemFontOfSize:10];
+    self.recommendLabel.textColor = IWColor(106, 106, 106);
+    self.recommendLabel.lineBreakMode = NSLineBreakByCharWrapping;
     
     self.moneyLabel.textColor = IWColor(255, 13, 69);
-    self.moneyLabel.font = [UIFont systemFontOfSize:23];
+    self.moneyLabel.font = [UIFont systemFontOfSize:10];
     self.moneyLabel.backgroundColor = [UIColor clearColor];
     
-    self.originalLabel.textColor = IWColor(159, 159, 159);
-    self.originalLabel.font = [UIFont systemFontOfSize:12];
-    self.originalLabel.backgroundColor = [UIColor clearColor];
+    self.comNumberLabel.textColor = IWColor(159, 159, 159);
+    self.comNumberLabel.font = [UIFont systemFontOfSize:10];
+    self.comNumberLabel.backgroundColor = [UIColor clearColor];
+    
+    self.satisfactionNumber.textColor = IWColor(255, 13, 69);
+    self.satisfactionNumber.font = [UIFont systemFontOfSize:10];
+    self.satisfactionNumber.backgroundColor = [UIColor clearColor];
+    
+    self.satisfactionLabel.textColor = IWColor(167, 167, 167);
+    self.satisfactionLabel.text = @"景区满意度:";
+    self.satisfactionLabel.font = [UIFont systemFontOfSize:10];
     
     
-    self.commentNumberLabel.textColor = IWColor(159, 159, 159);
-    self.commentNumberLabel.font = [UIFont systemFontOfSize:12];
-    self.commentNumberLabel.backgroundColor = [UIColor clearColor];
+    self.distanceLabel.textColor = IWColor(159, 159, 159);
+    self.distanceLabel.font = [UIFont systemFontOfSize:10];
+    self.distanceLabel.backgroundColor = [UIColor clearColor];
     
-    self.satisfyLabel.textColor = IWColor(255, 13, 69);
-    self.satisfyLabel.font = [UIFont systemFontOfSize:12];
-    self.satisfyLabel.backgroundColor = [UIColor clearColor];
-    self.satisfyLabel.adjustsFontSizeToFitWidth = YES;
-    self.typeLabel.textColor = IWColor(255, 13, 69);
-    self.typeLabel.font = [UIFont systemFontOfSize:12];
-    self.typeLabel.backgroundColor = [UIColor clearColor];
-    
-    self.journeyLabel.textColor = IWColor(159, 159, 159);
-    self.journeyLabel.font = [UIFont systemFontOfSize:12];
-    self.journeyLabel.backgroundColor = [UIColor clearColor];
-    
-    self.cityLabel.textColor = IWColor(159, 159, 159);
-    self.cityLabel.font = [UIFont systemFontOfSize:12];
-    self.cityLabel.backgroundColor = [UIColor clearColor];
-    
-    self.contentImageView.image = [UIImage imageNamed:@"精选内容图"];
-    self.RRPtitleLabel.text = @"凤凰古城";
-    self.moneyLabel.text = @"200";
-    self.originalLabel.text = self.string;
-    self.commentNumberLabel.text = @"1090条点评";
-    self.satisfyLabel.text = @"99%";
-    self.typeLabel.text = @"4A";
-    self.journeyLabel.text = @"30km以上";
-    self.cityLabel.text = @"城市观光";
-    self.scenerLabel.text = @"景区";
-    self.cityLabel.hidden = YES;
+    self.headImageView.image = [UIImage imageNamed:@"精选内容图"];
+    self.senicName.text = @"凤凰古城";
+    self.moneyLabel.text = @"￥200";
+    self.comNumberLabel.text = @"1090条评论";
+    self.satisfactionNumber.text = @"99%";
+    self.distanceLabel.text = @"30km以上";
 }
 //周边推荐赋值
 - (void)showDataWithModel:(RRPPeripheryModel *)model
 {
-    [self.contentImageView sd_setImageWithURL:model.small_imgurl placeholderImage:[UIImage imageNamed:@"上传图片228-228"]];
-    self.RRPtitleLabel.text = model.sceneryname;
+    [self.headImageView sd_setImageWithURL:model.small_imgurl placeholderImage:[UIImage imageNamed:@"上传图片228-228"]];
+    self.senicName.text = model.sceneryname;
     NSString *price = [model.sellerprice substringWithRange:NSMakeRange(0, [model.sellerprice length]-3)];
-    self.moneyLabel.text = price;
-    self.commentNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.comment_count];
-    if ([model.grade isEqualToString:@"0"]) {
-        self.typeLabel.hidden = YES;
-        self.scenerLabel.hidden = YES;
-    }else
-    {
-        self.typeLabel.hidden = NO;
-        self.scenerLabel.hidden = NO;
-        self.typeLabel.text = [NSString stringWithFormat:@"%@A",model.grade];
-    }
+    self.moneyLabel.text = [NSString stringWithFormat:@"￥%@元起",price];
+    self.comNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.comment_count];
+    
     if ([model.distance length] > 0) {
         NSString *distance = [NSString stringWithFormat:@"%.2f",[model.distance floatValue]];
-        self.journeyLabel.text = [NSString stringWithFormat:@"%@km",distance];
+        self.distanceLabel.text = [NSString stringWithFormat:@"%@km",distance];
     }
-    self.cityLabel.text = model.label;
-    self.satisfyLabel.text = model.satisfied;
-    NSString *originalPrice = [NSString stringWithFormat:@"%@",[model.marketprice substringWithRange:NSMakeRange(0, [model.marketprice length]-3)]];
-    //原价横线
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(1.5, self.originalLabel.frame.size.height/2, [originalPrice length]*13.0, 1)];
-    label.backgroundColor = IWColor(152, 152, 152);
-    [self.originalLabel addSubview:label];
-
-    self.originalLabel.text = [NSString stringWithFormat:@"￥%@",originalPrice];
-    
+    self.satisfactionNumber.text = model.satisfied;
+    self.recommendLabel.text = model.summary;
 }
 //门票精选赋值
 - (void)showDataWithTicketSelectedModel:(RRPHomeSelected *)model
 {
-    [self.contentImageView sd_setImageWithURL:model.small_imgurl placeholderImage:[UIImage imageNamed:@"上传图片228-228"]];
-    self.RRPtitleLabel.text =model.sceneryname;
+    [self.headImageView sd_setImageWithURL:model.small_imgurl placeholderImage:[UIImage imageNamed:@"上传图片228-228"]];
+    self.senicName.text =model.sceneryname;
     NSString *price = [model.sellerprice substringWithRange:NSMakeRange(0, [model.sellerprice length]-3)];
-    self.moneyLabel.text = price;
-    NSString *originalPrice = [model.marketprice substringWithRange:NSMakeRange(0, [model.marketprice length]-3)];
-    self.originalLabel.text = [NSString stringWithFormat:@"￥%@",originalPrice];
-//    CGSize detailSize = [originalPrice sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(200, MAXFLOAT) lineBreakMode:0];
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 6, detailSize.width, 1)];
-//    view.backgroundColor = IWColor(159, 159, 159);
-//    [self.originalLabel addSubview:view];
-
-    //原价横线
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(1.5, self.originalLabel.frame.size.height/2, [originalPrice length]*12.0, 1)];
-    label.backgroundColor = IWColor(152, 152, 152);
-    [self.originalLabel addSubview:label];
-    self.commentNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.comment_count];
-    self.satisfyLabel.text = model.satisfied;
-    if ([model.grade isEqualToString:@"0"]) {
-        self.typeLabel.hidden = YES;
-        self.scenerLabel.hidden = YES;
-    }else
-    {
-        self.typeLabel.hidden = NO;
-        self.scenerLabel.hidden = NO;
-       self.typeLabel.text = [NSString stringWithFormat:@"%@A",model.grade];
-    }
+    self.moneyLabel.text = [NSString stringWithFormat:@"￥%@元起",price];
+    self.comNumberLabel.text = [NSString stringWithFormat:@"%@条评论",model.comment_count];
+    self.satisfactionNumber.text = model.satisfied;
     NSString *distance = [NSString stringWithFormat:@"%.2fkm",[model.distance floatValue]];
-    self.journeyLabel.text = distance;
-      self.cityLabel.text = model.label;
+    self.distanceLabel.text = distance;
+    self.recommendLabel.text = model.summary;
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
