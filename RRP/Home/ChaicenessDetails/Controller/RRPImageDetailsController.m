@@ -44,7 +44,7 @@
     if (_scrollView == nil) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, RRPHeight)];
         self.scrollView.backgroundColor = [UIColor whiteColor];//颜色
-        self.scrollView.dk_backgroundColorPicker = DKColorWithColors([UIColor whiteColor], IWColor(200, 200, 200));
+        self.scrollView.dk_backgroundColorPicker = DKColorWithColors(IWColor(230, 230, 230), IWColor(200, 200, 200));
         self.scrollView.showsVerticalScrollIndicator = NO;//垂直线
         self.scrollView.showsHorizontalScrollIndicator = NO;//水平线
         self.scrollView.pagingEnabled = YES;//分页滚动

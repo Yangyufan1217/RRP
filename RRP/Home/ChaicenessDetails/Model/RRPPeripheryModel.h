@@ -13,6 +13,7 @@
 @property (nonatomic,strong)NSString *distance;//距离
 @property (nonatomic,strong)NSString *grade;//星级
 @property (nonatomic,strong)NSString *ID;//ID
+@property (nonatomic,strong)NSString *summary;//景区介绍
 @property (nonatomic,strong)NSURL *imgurl;//图片地址
 @property (nonatomic,strong)NSString *label;//标签
 @property (nonatomic,strong)NSString *sceneryname;//景点名称

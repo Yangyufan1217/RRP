@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -40,20 +40,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距景点9999km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIL-2v-Zkl">
-                        <rect key="frame" x="69" y="150" width="88" height="15"/>
+                        <rect key="frame" x="73" y="150" width="84" height="15"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-di-OoP">
-                        <rect key="frame" x="51" y="150" width="13" height="15"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="13" id="v3m-3u-WAG"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.97647058823529409" green="0.0" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47d-iI-sfD">
@@ -98,18 +88,14 @@
                 <constraint firstAttribute="trailing" secondItem="qSH-AP-g8u" secondAttribute="trailing" id="23p-Y9-fxr"/>
                 <constraint firstItem="LLG-1F-fGT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7.5" id="3AT-4V-iZU"/>
                 <constraint firstItem="UfT-YN-CAe" firstAttribute="top" secondItem="qSH-AP-g8u" secondAttribute="bottom" constant="10" id="4DW-7b-UyV"/>
-                <constraint firstItem="SZm-di-OoP" firstAttribute="leading" secondItem="LLG-1F-fGT" secondAttribute="trailing" id="4om-dU-vhk"/>
                 <constraint firstItem="qSH-AP-g8u" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6XZ-Hl-dvs"/>
                 <constraint firstItem="UfT-YN-CAe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7.5" id="96o-1J-Yvf"/>
-                <constraint firstItem="SZm-di-OoP" firstAttribute="top" secondItem="UfT-YN-CAe" secondAttribute="bottom" constant="5" id="9zR-nj-OGr"/>
                 <constraint firstAttribute="trailing" secondItem="47d-iI-sfD" secondAttribute="trailing" id="BBt-EC-8Pk"/>
                 <constraint firstItem="LLG-1F-fGT" firstAttribute="top" secondItem="UfT-YN-CAe" secondAttribute="bottom" constant="5" id="CP4-O5-BwH"/>
                 <constraint firstAttribute="trailing" secondItem="DIL-2v-Zkl" secondAttribute="trailing" constant="7.5" id="Mnr-cV-24L"/>
-                <constraint firstAttribute="bottom" secondItem="SZm-di-OoP" secondAttribute="bottom" constant="10" id="anr-oq-lQu"/>
                 <constraint firstItem="47d-iI-sfD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dei-si-ywv"/>
                 <constraint firstItem="DIL-2v-Zkl" firstAttribute="top" secondItem="UfT-YN-CAe" secondAttribute="bottom" constant="5" id="h8d-Oa-Su5"/>
                 <constraint firstItem="47d-iI-sfD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hTS-6j-cZu"/>
-                <constraint firstItem="DIL-2v-Zkl" firstAttribute="leading" secondItem="SZm-di-OoP" secondAttribute="trailing" constant="5" id="idn-T6-UD5"/>
                 <constraint firstItem="qSH-AP-g8u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="knz-XO-wB4"/>
                 <constraint firstAttribute="bottom" secondItem="DIL-2v-Zkl" secondAttribute="bottom" constant="10" id="s4l-kb-qJc"/>
                 <constraint firstAttribute="bottom" secondItem="LLG-1F-fGT" secondAttribute="bottom" constant="10" id="v6N-Vg-FyC"/>
@@ -122,7 +108,6 @@
                 <outlet property="distanceLabel" destination="DIL-2v-Zkl" id="WRi-T1-31R"/>
                 <outlet property="moneyLabel" destination="LLG-1F-fGT" id="zId-Fu-Ae0"/>
                 <outlet property="nameLabel" destination="UfT-YN-CAe" id="uMC-be-Fqf"/>
-                <outlet property="riseLabel" destination="SZm-di-OoP" id="D5n-o0-D3B"/>
                 <outlet property="typeLabel" destination="cau-bP-30z" id="bpq-Uf-DYz"/>
             </connections>
             <point key="canvasLocation" x="211.5" y="263.5"/>

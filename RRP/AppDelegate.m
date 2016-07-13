@@ -166,8 +166,8 @@
      }];
 
     //初始化应用，appKey和appSecret从后台申请得
-    [SMSSDK registerApp:@"115577265b8e0"
-             withSecret:@"fa38965cb92420aa64e60262270f1583"];
+    [SMSSDK registerApp:@"11f6f973fb67c"
+             withSecret:@"8a50885a2aacbfe6e7ca570fdd11154a"];
     
     //友盟统计
     UMConfigInstance.appKey = @"570380de67e58e5b6f0008b9";

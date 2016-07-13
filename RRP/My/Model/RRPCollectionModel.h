@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *sellerprice;//现价
 @property (nonatomic, strong) NSString *sid;//景区id
 @property (nonatomic, strong) NSString *sname;//景点名称
+@property (nonatomic, strong) NSString *summary;//景点介绍
 
 
 @end
