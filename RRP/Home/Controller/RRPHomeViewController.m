@@ -24,6 +24,8 @@
 #import "RRPFindTopModel.h"
 #import "RRPAllCityHandle.h"
 #import "SDCycleScrollView.h"
+#import "QMYViewController.h"
+#import "RRPLightOrderController.h"
 @interface RRPHomeViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CLLocationManagerDelegate,SDCycleScrollViewDelegate> {
     BOOL Transform;
 }
@@ -120,6 +122,7 @@ typedef enum refreshState refreshState;
 
     
     [self layoutsearchBar];
+    [self layoutRightBarButtonItem];
    
     //注册cell
     UINib *nib = [UINib nibWithNibName:@"RRPHomeOneTableViewCell" bundle:nil];
@@ -188,7 +191,56 @@ typedef enum refreshState refreshState;
         [self.locationManager startUpdatingLocation];
     }
 }
+//扫描 布局右侧tabBar
+- (void)layoutRightBarButtonItem
+{
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"扫描"] style:(UIBarButtonItemStyleDone) target:self action:@selector(swipeAction)];
+    self.navigationItem.rightBarButtonItem = rightItem;
 
+
+}
+//扫描
+- (void)swipeAction
+{
+//    NSLog(@"扫描");
+//    // iOS 8 后，全部都要授权
+//    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+//    switch (status) {
+//        case AVAuthorizationStatusNotDetermined:{
+//            // 许可对话没有出现，发起授权许可
+//            
+//            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+//                
+//                if (granted) {
+//                    //第一次用户接受
+//                    QMYViewController *qm = [[QMYViewController alloc] init];
+//                    [self.navigationController pushViewController:qm animated:YES];
+//                }else{
+//                    //用户拒绝
+//                    [[MyAlertView sharedInstance] showFrom:@"用户明确地拒绝授权,请打开权限"];
+//                }
+//            }];
+//            break;
+//        }
+//        case AVAuthorizationStatusAuthorized:{
+//            // 已经开启授权，可继续
+//            QMYViewController *qm = [[QMYViewController alloc] init];
+//            [self.navigationController pushViewController:qm animated:YES];
+//            break;
+//        }
+//        case AVAuthorizationStatusDenied:
+//        case AVAuthorizationStatusRestricted:
+//            // 用户明确地拒绝授权，或者相机设备无法访问
+//            [[MyAlertView sharedInstance] showFrom:@"用户明确地拒绝授权，或者相机设备无法访问,请打开权限"];
+//            break;
+//        default:
+//            break;
+//    }
+
+    RRPLightOrderController *lightOrderVC = [[RRPLightOrderController alloc] init];
+    [self.navigationController pushViewController:lightOrderVC animated:YES];
+
+}
 //门票精选丄拉加载
 - (void)loadSelectedNewData
 {
@@ -217,8 +269,6 @@ typedef enum refreshState refreshState;
         [self networkWithPage:1];
     }
 }
-
-
 
 //跳转城市列表界面
 - (void)pushToCityListView:(UIBarButtonItem *)item

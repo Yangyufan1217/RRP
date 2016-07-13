@@ -366,16 +366,25 @@
 		514A6A921D2E2F1E0040A8A3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514A6A911D2E2F1E0040A8A3 /* CoreText.framework */; };
 		514A6A941D2E2F2C0040A8A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514A6A931D2E2F2C0040A8A3 /* QuartzCore.framework */; };
 		514A6A961D2E2F840040A8A3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514A6A951D2E2F840040A8A3 /* CoreMotion.framework */; };
+		5150C12A1D36210400B842C8 /* RRPOpenTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5150C1281D36210400B842C8 /* RRPOpenTimeCell.m */; };
+		5150C12B1D36210400B842C8 /* RRPOpenTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5150C1291D36210400B842C8 /* RRPOpenTimeCell.xib */; };
 		516457B91CC9BAA6009A8D3D /* RRPDateCanlenderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 516457B81CC9BAA6009A8D3D /* RRPDateCanlenderModel.m */; };
 		516D9D491CC4BFF80083472B /* RRPAllOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 516D9D481CC4BFF80083472B /* RRPAllOrderModel.m */; };
+		5182140A1D349B3200288ACF /* QMYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518214091D349B3200288ACF /* QMYViewController.m */; };
 		5190E3981CC60A4A00B385BA /* RRPNoPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190E3971CC60A4A00B385BA /* RRPNoPayModel.m */; };
 		5190E39B1CC61FF800B385BA /* RRPNoTravelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190E39A1CC61FF800B385BA /* RRPNoTravelModel.m */; };
 		5190E39E1CC6201500B385BA /* RRPNoCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190E39D1CC6201500B385BA /* RRPNoCommentModel.m */; };
 		5190E3A11CC625A000B385BA /* RRPCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190E3A01CC625A000B385BA /* RRPCollectionModel.m */; };
 		51A77B3A1CCDECDA000861B8 /* RRPTicketContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A77B391CCDECDA000861B8 /* RRPTicketContactModel.m */; };
+		51BC407D1D35D4C60007CD73 /* RRPLightOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BC407C1D35D4C60007CD73 /* RRPLightOrderController.m */; };
+		51BC40811D35DAA80007CD73 /* RRPLightIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BC407F1D35DAA80007CD73 /* RRPLightIntroduceCell.m */; };
+		51BC40821D35DAA80007CD73 /* RRPLightIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51BC40801D35DAA80007CD73 /* RRPLightIntroduceCell.xib */; };
 		51C97AF81CDADE1A0025E4B2 /* ios启动图.png in Resources */ = {isa = PBXBuildFile; fileRef = 51C97AF71CDADE1A0025E4B2 /* ios启动图.png */; };
 		51C97AFB1CDB3A210025E4B2 /* RRPHomeAmbitusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C97AFA1CDB3A210025E4B2 /* RRPHomeAmbitusController.m */; };
 		51CD8DC31CC0F1A9009E75C5 /* RRPHomeClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD8DC21CC0F1A9009E75C5 /* RRPHomeClassifyModel.m */; };
+		51D5E49A1D36378600AD21DD /* RRPGetTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D5E4981D36378600AD21DD /* RRPGetTicketCell.m */; };
+		51D5E49B1D36378600AD21DD /* RRPGetTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51D5E4991D36378600AD21DD /* RRPGetTicketCell.xib */; };
+		51D5E49E1D364BD000AD21DD /* RRPAddGetTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D5E49D1D364BD000AD21DD /* RRPAddGetTicketView.m */; };
 		51E5DCF51CC758550019482A /* RRPOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5DCF41CC758550019482A /* RRPOrderModel.m */; };
 		51FAAD0F1CD38A77004D14F0 /* RRPMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FAAD0E1CD38A77004D14F0 /* RRPMessageModel.m */; };
 		B09D21E9CC9B2CEF78295308 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8AC556D049919F473E5A45 /* libPods.a */; };
@@ -1068,10 +1077,15 @@
 		514A6A911D2E2F1E0040A8A3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		514A6A931D2E2F2C0040A8A3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		514A6A951D2E2F840040A8A3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5150C1271D36210400B842C8 /* RRPOpenTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPOpenTimeCell.h; sourceTree = "<group>"; };
+		5150C1281D36210400B842C8 /* RRPOpenTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPOpenTimeCell.m; sourceTree = "<group>"; };
+		5150C1291D36210400B842C8 /* RRPOpenTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RRPOpenTimeCell.xib; sourceTree = "<group>"; };
 		516457B71CC9BAA6009A8D3D /* RRPDateCanlenderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPDateCanlenderModel.h; sourceTree = "<group>"; };
 		516457B81CC9BAA6009A8D3D /* RRPDateCanlenderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPDateCanlenderModel.m; sourceTree = "<group>"; };
 		516D9D471CC4BFF80083472B /* RRPAllOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPAllOrderModel.h; sourceTree = "<group>"; };
 		516D9D481CC4BFF80083472B /* RRPAllOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPAllOrderModel.m; sourceTree = "<group>"; };
+		518214081D349B3200288ACF /* QMYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMYViewController.h; sourceTree = "<group>"; };
+		518214091D349B3200288ACF /* QMYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMYViewController.m; sourceTree = "<group>"; };
 		5190E3961CC60A4A00B385BA /* RRPNoPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPNoPayModel.h; sourceTree = "<group>"; };
 		5190E3971CC60A4A00B385BA /* RRPNoPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPNoPayModel.m; sourceTree = "<group>"; };
 		5190E3991CC61FF800B385BA /* RRPNoTravelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPNoTravelModel.h; sourceTree = "<group>"; };
@@ -1082,11 +1096,21 @@
 		5190E3A01CC625A000B385BA /* RRPCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPCollectionModel.m; sourceTree = "<group>"; };
 		51A77B381CCDECDA000861B8 /* RRPTicketContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPTicketContactModel.h; sourceTree = "<group>"; };
 		51A77B391CCDECDA000861B8 /* RRPTicketContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPTicketContactModel.m; sourceTree = "<group>"; };
+		51BC407B1D35D4C60007CD73 /* RRPLightOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPLightOrderController.h; sourceTree = "<group>"; };
+		51BC407C1D35D4C60007CD73 /* RRPLightOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPLightOrderController.m; sourceTree = "<group>"; };
+		51BC407E1D35DAA80007CD73 /* RRPLightIntroduceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPLightIntroduceCell.h; sourceTree = "<group>"; };
+		51BC407F1D35DAA80007CD73 /* RRPLightIntroduceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPLightIntroduceCell.m; sourceTree = "<group>"; };
+		51BC40801D35DAA80007CD73 /* RRPLightIntroduceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RRPLightIntroduceCell.xib; sourceTree = "<group>"; };
 		51C97AF71CDADE1A0025E4B2 /* ios启动图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios启动图.png"; sourceTree = "<group>"; };
 		51C97AF91CDB3A210025E4B2 /* RRPHomeAmbitusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPHomeAmbitusController.h; sourceTree = "<group>"; };
 		51C97AFA1CDB3A210025E4B2 /* RRPHomeAmbitusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPHomeAmbitusController.m; sourceTree = "<group>"; };
 		51CD8DC11CC0F1A9009E75C5 /* RRPHomeClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPHomeClassifyModel.h; sourceTree = "<group>"; };
 		51CD8DC21CC0F1A9009E75C5 /* RRPHomeClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPHomeClassifyModel.m; sourceTree = "<group>"; };
+		51D5E4971D36378600AD21DD /* RRPGetTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPGetTicketCell.h; sourceTree = "<group>"; };
+		51D5E4981D36378600AD21DD /* RRPGetTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPGetTicketCell.m; sourceTree = "<group>"; };
+		51D5E4991D36378600AD21DD /* RRPGetTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RRPGetTicketCell.xib; sourceTree = "<group>"; };
+		51D5E49C1D364BD000AD21DD /* RRPAddGetTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPAddGetTicketView.h; sourceTree = "<group>"; };
+		51D5E49D1D364BD000AD21DD /* RRPAddGetTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPAddGetTicketView.m; sourceTree = "<group>"; };
 		51E5DCF31CC758550019482A /* RRPOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPOrderModel.h; sourceTree = "<group>"; };
 		51E5DCF41CC758550019482A /* RRPOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRPOrderModel.m; sourceTree = "<group>"; };
 		51FAAD0D1CD38A77004D14F0 /* RRPMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRPMessageModel.h; sourceTree = "<group>"; };
@@ -1248,6 +1272,7 @@
 		1B051B1C1C71E69100B83E4C /* PublicClass */ = {
 			isa = PBXGroup;
 			children = (
+				518214071D349B3200288ACF /* Swipe */,
 				514A6A1A1D2E2EBD0040A8A3 /* AliPaySDK */,
 				514A6A041D2E008E0040A8A3 /* WeiChatPay */,
 				1BD3C3FD1CCC814D000C5654 /* Payment */,
@@ -1707,6 +1732,8 @@
 				1B64321F1CC08819001B0B85 /* RRPNoticeController.m */,
 				1B6432201CC08819001B0B85 /* RRPOrderController.h */,
 				1B6432211CC08819001B0B85 /* RRPOrderController.m */,
+				51BC407B1D35D4C60007CD73 /* RRPLightOrderController.h */,
+				51BC407C1D35D4C60007CD73 /* RRPLightOrderController.m */,
 				1B6432221CC08819001B0B85 /* RRPPaymentController.h */,
 				1B6432231CC08819001B0B85 /* RRPPaymentController.m */,
 			);
@@ -1807,6 +1834,17 @@
 				1B6432711CC08819001B0B85 /* RRPScenicTicketCell.h */,
 				1B6432721CC08819001B0B85 /* RRPScenicTicketCell.m */,
 				1B6432731CC08819001B0B85 /* RRPScenicTicketCell.xib */,
+				51BC407E1D35DAA80007CD73 /* RRPLightIntroduceCell.h */,
+				51BC407F1D35DAA80007CD73 /* RRPLightIntroduceCell.m */,
+				51BC40801D35DAA80007CD73 /* RRPLightIntroduceCell.xib */,
+				5150C1271D36210400B842C8 /* RRPOpenTimeCell.h */,
+				5150C1281D36210400B842C8 /* RRPOpenTimeCell.m */,
+				5150C1291D36210400B842C8 /* RRPOpenTimeCell.xib */,
+				51D5E4971D36378600AD21DD /* RRPGetTicketCell.h */,
+				51D5E4981D36378600AD21DD /* RRPGetTicketCell.m */,
+				51D5E4991D36378600AD21DD /* RRPGetTicketCell.xib */,
+				51D5E49C1D364BD000AD21DD /* RRPAddGetTicketView.h */,
+				51D5E49D1D364BD000AD21DD /* RRPAddGetTicketView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2447,6 +2485,15 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		518214071D349B3200288ACF /* Swipe */ = {
+			isa = PBXGroup;
+			children = (
+				518214081D349B3200288ACF /* QMYViewController.h */,
+				518214091D349B3200288ACF /* QMYViewController.m */,
+			);
+			path = Swipe;
+			sourceTree = "<group>";
+		};
 		84517B4CE146293E9C35390C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2613,12 +2660,14 @@
 				1B6433081CC08819001B0B85 /* RRPChoicenessCell.xib in Resources */,
 				1B0C04BE1CA3A73D0067A910 /* camera-flash-off.png in Resources */,
 				1BDE85E21C8EE20A0081B69E /* gray.png in Resources */,
+				51BC40821D35DAA80007CD73 /* RRPLightIntroduceCell.xib in Resources */,
 				1BDE877D1CA0DDE80081B69E /* bg_5_n@2x.png.png in Resources */,
 				1BDE85ED1C8EE9560081B69E /* entertain.png in Resources */,
 				1BD5C3AC1CB5353100FF2077 /* CalendarRow@2x.png in Resources */,
 				1B6432E01CC08819001B0B85 /* RRPChDetailsCommentShowCell.xib in Resources */,
 				1B6432FD1CC08819001B0B85 /* RRPmoneyCell.xib in Resources */,
 				1BDE877E1CA0DDE80081B69E /* bg_img_02.png in Resources */,
+				5150C12B1D36210400B842C8 /* RRPOpenTimeCell.xib in Resources */,
 				1BDE86071C9078290081B69E /* RRPMySwitchCell.xib in Resources */,
 				1BDE860F1C9125470081B69E /* RRPAllOrderCell.xib in Resources */,
 				1BFD9E071C7AC5CD002F350B /* 更多.png in Resources */,
@@ -2706,6 +2755,7 @@
 				1BD5C3B01CB5353100FF2077 /* CalendarSelectedDate@2x.png in Resources */,
 				1B6431F41CBA6E1D001B0B85 /* RRPOnSaleListCell.xib in Resources */,
 				1BFD39631C8421620076C16E /* save.png in Resources */,
+				51D5E49B1D36378600AD21DD /* RRPGetTicketCell.xib in Resources */,
 				1BD5C3AA1CB5353100FF2077 /* CalendarPreviousMonth@2x.png in Resources */,
 				1B6432DC1CC08819001B0B85 /* RRPCDCommmentCell.xib in Resources */,
 				1B6431E51CBA6E1D001B0B85 /* RRPCommentCell.xib in Resources */,
@@ -2813,6 +2863,7 @@
 				1B0C04B81CA3A73D0067A910 /* CameraStyleKitClass.m in Sources */,
 				1B6432D41CC08819001B0B85 /* RRPAllCommentModel.m in Sources */,
 				1B6433181CC08819001B0B85 /* RRPHomeViewController.m in Sources */,
+				51D5E49A1D36378600AD21DD /* RRPGetTicketCell.m in Sources */,
 				1B64332A1CC08819001B0B85 /* RRPHomeLocationView.m in Sources */,
 				1BDE86871C9A4CB20081B69E /* Utility.m in Sources */,
 				514A6A8B1D2E2EBD0040A8A3 /* RSADataVerifier.m in Sources */,
@@ -2824,6 +2875,7 @@
 				1BDE86AB1C9FFB9B0081B69E /* RRPMyInviteFriendCell.m in Sources */,
 				1BDE87831CA0EB550081B69E /* RRPMyAboutController.m in Sources */,
 				1B64330B1CC08819001B0B85 /* ScenicSpotViewController.m in Sources */,
+				5150C12A1D36210400B842C8 /* RRPOpenTimeCell.m in Sources */,
 				1BDE878B1CA1467E0081B69E /* RRPCompanyIntroduceController.m in Sources */,
 				1B64331E1CC08819001B0B85 /* RRPHomeSearchModel.m in Sources */,
 				1B6433071CC08819001B0B85 /* RRPChoicenessCell.m in Sources */,
@@ -2859,6 +2911,7 @@
 				1BDE86061C9078290081B69E /* RRPMySwitchCell.m in Sources */,
 				1B051B2D1C72C16000B83E4C /* ViewController.m in Sources */,
 				1BDE86F61CA03BBE0081B69E /* UINavigationBar+Night.m in Sources */,
+				51D5E49E1D364BD000AD21DD /* RRPAddGetTicketView.m in Sources */,
 				1B6432D21CC08819001B0B85 /* RRPOrderController.m in Sources */,
 				1BDE86911C9AA4850081B69E /* RRPMyHeadPortraitCell.m in Sources */,
 				5142E4FF1CD265D2009DC99C /* RRPCityListViewController.m in Sources */,
@@ -2887,6 +2940,7 @@
 				514A6A121D2E008E0040A8A3 /* DataMD5.m in Sources */,
 				1B6433131CC08819001B0B85 /* RPPCityNameCell.m in Sources */,
 				1B6433251CC08819001B0B85 /* RRPHomeCityCell.m in Sources */,
+				5182140A1D349B3200288ACF /* QMYViewController.m in Sources */,
 				1B6432D11CC08819001B0B85 /* RRPNoticeController.m in Sources */,
 				1B6432FE1CC08819001B0B85 /* RRPNoticeCell.m in Sources */,
 				1B64331D1CC08819001B0B85 /* RRPHomeClassify.m in Sources */,
@@ -2964,6 +3018,8 @@
 				1BD3C4031CCC81D9000C5654 /* PaymentController.m in Sources */,
 				514A6A851D2E2EBD0040A8A3 /* DataSigner.m in Sources */,
 				1B6432D31CC08819001B0B85 /* RRPPaymentController.m in Sources */,
+				51BC407D1D35D4C60007CD73 /* RRPLightOrderController.m in Sources */,
+				51BC40811D35DAA80007CD73 /* RRPLightIntroduceCell.m in Sources */,
 				1B0C04F11CA4E3480067A910 /* BoPhotoListCell.m in Sources */,
 				1BDE86EB1CA03BBE0081B69E /* DKNightVersionManager.m in Sources */,
 				1BDE86EE1CA03BBE0081B69E /* DKDeallocBlockExecutor.m in Sources */,

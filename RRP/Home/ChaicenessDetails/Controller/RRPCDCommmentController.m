@@ -142,7 +142,6 @@ typedef NS_ENUM(NSInteger, refState){
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
     }];
-
 }
 //根据标签获取评论
 - (void)requestCommentDataByLabelWithRestate:(refState)refState andPageNumber:(NSInteger)page Name:(NSString *)name
