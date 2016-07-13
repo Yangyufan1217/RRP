@@ -808,7 +808,7 @@ typedef enum refreshState refreshState;
         }else if (section == 6) {
             //整个区头view
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, RRPWidth, 62.5)];
-            view.dk_backgroundColorPicker = DKColorWithColors(IWColor(246, 246, 246), IWColor(200, 200, 200));
+            view.dk_backgroundColorPicker = DKColorWithColors(IWColor(236, 236, 236), IWColor(200, 200, 200));
             //上分割线
             UIView *wireOneView = [[UIView alloc] initWithFrame:CGRectMake(0, 12.5, RRPWidth, 1)];
             wireOneView.backgroundColor = IWColor(221, 221, 221);
@@ -937,7 +937,7 @@ typedef enum refreshState refreshState;
         self.collectionView.dataSource = self;
         self.collectionView.delegate = self;
         self.collectionView.showsVerticalScrollIndicator = NO;
-        self.collectionView.dk_backgroundColorPicker = DKColorWithColors(IWColor(250, 250, 250), IWColor(200, 200, 200));
+        self.collectionView.dk_backgroundColorPicker = DKColorWithColors(IWColor(230, 230, 230), IWColor(200, 200, 200));
     }
     return _collectionView;
 }
@@ -956,6 +956,8 @@ typedef enum refreshState refreshState;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RRPChDetilsCommendContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RRPChDetilsCommendContentCell" forIndexPath:indexPath];
     [cell showDataWithModel:self.peripheryArray[indexPath.row]];
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 3;
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }

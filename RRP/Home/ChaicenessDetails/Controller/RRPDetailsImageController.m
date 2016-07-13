@@ -55,7 +55,7 @@
         self.collectionView.dataSource = self;
         self.collectionView.delegate = self;
         self.collectionView.showsVerticalScrollIndicator = NO;
-        self.collectionView.dk_backgroundColorPicker = DKColorWithColors(IWColor(240, 240, 240), IWColor(200, 200, 200));
+        self.collectionView.dk_backgroundColorPicker = DKColorWithColors(IWColor(230, 230, 230), IWColor(200, 200, 200));
     }
     return _collectionView;
 }
@@ -75,6 +75,8 @@
     RRPDetailsImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RRPDetailsImageCell" forIndexPath:indexPath];
     NSURL *imageURL = [NSURL URLWithString:self.imageURLArray[indexPath.row]];
     [cell.contentImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"点评124-124"]];
+    cell.layer.cornerRadius = 5;
+    cell.layer.masksToBounds = YES;
     return cell;
 }
 

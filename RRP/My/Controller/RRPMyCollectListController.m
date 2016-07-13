@@ -100,16 +100,15 @@ typedef NS_ENUM(NSInteger, refState){
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
- 
-
 }
 //懒加载
 - (UITableView *)tableView {
     if (_tableView == nil) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,RRPWidth, RRPHeight)];
-        self.tableView.dk_backgroundColorPicker = DKColorWithColors(IWColor(246, 246, 246), IWColor(200, 200, 200));
+        self.tableView.dk_backgroundColorPicker = DKColorWithColors(IWColor(236, 236, 236), IWColor(200, 200, 200));
         self.tableView.tableFooterView = [[UIView alloc] init];
         self.tableView.showsVerticalScrollIndicator = NO;
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
@@ -146,13 +145,16 @@ typedef NS_ENUM(NSInteger, refState){
     RRPMyCollectListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RRPMyCollectListCell" forIndexPath:indexPath];
     [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
     RRPCollectionModel *model = self.collectionArray[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backView.layer.masksToBounds = YES;
+    cell.backView.layer.cornerRadius = 5;
     [cell showDataWithModel:model];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 118;
+    return 80;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

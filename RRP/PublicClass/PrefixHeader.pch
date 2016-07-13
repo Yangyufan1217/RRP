@@ -72,13 +72,18 @@
 
 
 #pragma mark - 数据接口
-//外网
+//内网
 //#define Server(relativeUrl) [NSString stringWithFormat:@"http://dev2.renrenpiao.net:8085/%@", relativeUrl]
-//外网
-#define Server(relativeUrl) [NSString stringWithFormat:@"http://app.renrenpiao.com/%@", relativeUrl]
-
 //内网
 //#define Server(relativeUrl) [NSString stringWithFormat:@"http://192.168.0.11:8085/%@", relativeUrl]
+
+
+
+//线上
+//#define Server(relativeUrl) [NSString stringWithFormat:@"http://app.renrenpiao.com/%@", relativeUrl]
+//测试
+#define Server(relativeUrl) [NSString stringWithFormat:@"http://tapp.renrenpiao.com/%@", relativeUrl]
+
 
 /**
  *所有城市
